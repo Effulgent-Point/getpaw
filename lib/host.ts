@@ -9,7 +9,10 @@ export type Shell = "paw" | "ep";
 
 export async function getShell(): Promise<Shell> {
   const h = await headers();
-  const host = (h.get("x-forwarded-host") ?? h.get("host") ?? "").toLowerCase();
-  if (host.includes("effulgentpoint.com")) return "ep";
+  const raw = (h.get("x-forwarded-host") ?? h.get("host") ?? "").toLowerCase();
+  const host = raw.split(":")[0]; // strip any port
+  if (host === "effulgentpoint.com" || host.endsWith(".effulgentpoint.com")) {
+    return "ep";
+  }
   return "paw";
 }

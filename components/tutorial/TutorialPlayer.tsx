@@ -103,8 +103,22 @@ export function TutorialPlayer({ track }: { track: Track }) {
     function onKey(e: KeyboardEvent) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (document.body.dataset.tutModal === "open") return;
+      // Stand down when focus is on a control (input, button, link, select) so
+      // the single-key shortcuts never hijack Space-to-scroll or Space/Enter
+      // activating a focused button.
       const t = e.target as HTMLElement | null;
-      if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+      if (
+        t &&
+        (t.tagName === "INPUT" ||
+          t.tagName === "TEXTAREA" ||
+          t.tagName === "SELECT" ||
+          t.tagName === "BUTTON" ||
+          t.tagName === "A" ||
+          t.isContentEditable ||
+          t.getAttribute("role") === "button")
+      ) {
+        return;
+      }
 
       if (e.key === "Escape") {
         e.preventDefault();

@@ -36,7 +36,7 @@ export default async function TrackPage({
 
   return (
     <TutorialShell>
-      <TutorialPlayer track={track} />
+      <TutorialPlayer key={track.id} track={track} />
     </TutorialShell>
   );
 }

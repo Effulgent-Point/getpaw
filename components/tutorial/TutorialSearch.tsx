@@ -14,6 +14,7 @@ export function TutorialSearch() {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const results = useMemo<SearchResult[]>(
     () => (open ? searchTutorials(query) : []),
@@ -54,6 +55,8 @@ export function TutorialSearch() {
     return () => {
       delete document.body.dataset.tutModal;
       window.clearTimeout(t);
+      // Return focus to the trigger so keyboard users keep their place.
+      triggerRef.current?.focus();
     };
   }, [open]);
 
@@ -82,6 +85,7 @@ export function TutorialSearch() {
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Search the tutorial"
@@ -128,7 +132,7 @@ export function TutorialSearch() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search tracks, sections, commands..."
-                className="w-full bg-transparent text-[15px] outline-none"
+                className="w-full rounded bg-transparent text-[15px] outline-none focus-visible:ring-2 focus-visible:ring-[var(--tut-c1)]"
                 style={{ color: "var(--tut-fg)" }}
                 autoComplete="off"
                 spellCheck={false}

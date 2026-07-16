@@ -18,7 +18,7 @@ const principles = [
   },
   {
     principle: "Empowerment, not replacement",
-    paw: "Your agent writes code fast; paw keeps you the conductor. 14 of 18 agents are read-only. They review and report, you decide.",
+    paw: "Your agent writes code fast; paw keeps you the conductor. 14 of 18 agents run with restricted permissions. Most only look and report, you decide.",
   },
   {
     principle: "Built on a foundation of trust",
@@ -50,7 +50,7 @@ const slides: Slide[] = [
     title: "Empowerment, not replacement",
     bullets: [
       "Clear benefits: standards are enforced, not suggested",
-      "Empowerment: 14 of 18 agents only look and report",
+      "Empowerment: 14 of 18 agents run with restricted permissions",
       "Trust: hooks block the dangerous git moves, mechanically",
     ],
   },
@@ -165,7 +165,7 @@ export default function BambooHrPage() {
               <div key={s.label}>
                 <p
                   className="label"
-                  style={{ color: "var(--bamboo)", marginBottom: 8 }}
+                  style={{ color: "var(--bamboo-deep)", marginBottom: 8 }}
                 >
                   Step {idx + 1} · {s.label}
                 </p>

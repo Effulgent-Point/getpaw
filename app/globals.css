@@ -220,7 +220,7 @@
 .tut-root {
   --tut-page-bg: #f2f5f4;
   --tut-fg: #1e2422;
-  --tut-dim: #7c8681;
+  --tut-dim: #5e6a66;
   --tut-line: #dde3e0;
   --tut-hair: #c8d0cc;
   --tut-term-bg: #ffffff;
@@ -378,7 +378,7 @@
 .bamboo-card .p-num {
   font-family: var(--fd), sans-serif;
   font-weight: 800;
-  color: var(--bamboo);
+  color: var(--bamboo-deep);
   font-size: 26px;
   line-height: 1;
 }

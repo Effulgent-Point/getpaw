@@ -7,7 +7,12 @@ export async function StarCount() {
       "https://api.github.com/repos/Effulgent-Point/paw",
       {
         next: { revalidate: 3600 },
-        headers: { Accept: "application/vnd.github+json" },
+        headers: {
+          Accept: "application/vnd.github+json",
+          // GitHub's REST API rejects requests without a User-Agent.
+          "User-Agent": "getpaw.dev",
+        },
+        signal: AbortSignal.timeout(2500),
       }
     );
     if (!res.ok) return null;

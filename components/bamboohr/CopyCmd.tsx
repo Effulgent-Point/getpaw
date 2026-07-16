@@ -19,7 +19,11 @@ export function CopyCmd({ cmd }: { cmd: string }) {
   return (
     <div className="bamboo-cmd">
       <code>{cmd}</code>
-      <button className="copy" onClick={copy} aria-label={`Copy command: ${cmd}`}>
+      <button
+        className="copy"
+        onClick={copy}
+        aria-label={done ? "Command copied" : `Copy command: ${cmd}`}
+      >
         {done ? "Copied" : "Copy"}
       </button>
     </div>

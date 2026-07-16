@@ -37,6 +37,13 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      // Only react when the deck has focus or is presenting fullscreen, so we
+      // never hijack Space-to-scroll or a stray "f" elsewhere on the page.
+      const deck = deckRef.current;
+      const active =
+        deck?.contains(document.activeElement) ||
+        document.fullscreenElement === deck;
+      if (!active) return;
       if (["ArrowRight", " ", "PageDown"].includes(e.key)) {
         e.preventDefault();
         go(1);
@@ -66,9 +73,10 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
     <div
       className="deck"
       ref={deckRef}
+      tabIndex={0}
       role="group"
       aria-roledescription="carousel"
-      aria-label="Training slides"
+      aria-label="Training slides. Focus here, then use the arrow keys."
     >
       <div className="deck-stage" aria-live="polite">
         {s.img ? (
@@ -94,12 +102,20 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
         <button onClick={() => go(-1)} disabled={i === 0} aria-label="Previous slide">
           Prev
         </button>
-        <span aria-hidden="true">
-          {i + 1} / {n}
-          <span className="deck-hint"> · arrows to move, F to present</span>
+        <span>
+          Slide {i + 1} of {n}
+          <span className="deck-hint" aria-hidden="true">
+            {" "}
+            · arrows to move, F to present
+          </span>
         </span>
         <span className="deck-actions">
-          <button onClick={toggleFs} aria-label="Toggle fullscreen present mode">
+          <button
+            onClick={toggleFs}
+            aria-label={
+              fs ? "Exit fullscreen present mode" : "Enter fullscreen present mode"
+            }
+          >
             {fs ? "Exit" : "Present"}
           </button>
           <button onClick={() => go(1)} disabled={i === n - 1} aria-label="Next slide">
