@@ -5,6 +5,11 @@ import {
   IBM_Plex_Mono,
 } from "next/font/google";
 import "./globals.css";
+import { getShell } from "@/lib/host";
+import { PawHeader } from "@/components/chrome/PawHeader";
+import { PawFooter } from "@/components/chrome/PawFooter";
+import { EpHeader } from "@/components/chrome/EpHeader";
+import { EpFooter } from "@/components/chrome/EpFooter";
 
 // Optical Bench type system, exposed as the --fd / --fb / --fm CSS variables
 // that globals.css and tailwind.config.ts reference.
@@ -34,26 +39,62 @@ export const metadata: Metadata = {
   },
   description:
     "paw is an open-source AI SDLC starter kit: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
+  applicationName: "paw",
+  openGraph: {
+    type: "website",
+    siteName: "paw",
+    url: "https://getpaw.dev",
+    title: "paw, Personal Agent Workflows",
+    description:
+      "An open-source AI SDLC starter kit: standards enforced not suggested, 18 agents, 7 skill bundles, hooks, and a CLI.",
+  },
 };
 
-/*
-  NOTE (scaffold): this root layout ships a minimal standalone shell so the
-  catalog route builds and reads on its own. The host-switched chrome
-  (getpaw.dev PawHeader/Footer vs paw.effulgentpoint.com EpHeader/Footer)
-  is a separate workstream under components/chrome/. Replace the header and
-  footer below when that lands.
-*/
-export default function RootLayout({
+// SoftwareApplication structured data. Canonical identity is getpaw.dev
+// regardless of which host serves the request.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "paw",
+  alternateName: "Personal Agent Workflows",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "macOS, Linux",
+  url: "https://getpaw.dev/",
+  downloadUrl: "https://github.com/Effulgent-Point/paw",
+  softwareHelp: "https://getpaw.dev/tutorial",
+  description:
+    "paw is an open-source AI SDLC starter kit: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
+  license: "https://opensource.org/licenses/MIT",
+  isAccessibleForFree: true,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: {
+    "@type": "Organization",
+    name: "Effulgent Point",
+    url: "https://effulgentpoint.com/",
+  },
+};
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const shell = await getShell();
+
   return (
     <html
       lang="en"
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          // Static, hardcoded object (no user input). Escape "<" so a value can
+          // never break out of the script element.
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(JSON_LD).replace(/</g, "\\u003c"),
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
@@ -61,47 +102,11 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        <header className="border-b border-line">
-          <div className="wrap flex items-center gap-6 py-5 text-[14.5px]">
-            <a
-              href="/"
-              className="flex items-center gap-2 font-display text-[17px] font-extrabold no-underline"
-            >
-              <span className="relative inline-block h-[9px] w-[9px] rounded-full bg-ink" />
-              paw
-            </a>
-            <nav className="ml-auto flex flex-wrap items-center gap-5 text-mut">
-              <a href="/catalog" className="no-underline hover:text-ink">
-                Catalog
-              </a>
-              <a href="/tutorial" className="no-underline hover:text-ink">
-                Tutorial
-              </a>
-              <a href="/install" className="no-underline hover:text-ink">
-                Install
-              </a>
-              <a
-                href="https://github.com/Effulgent-Point/paw"
-                className="no-underline hover:text-ink"
-              >
-                GitHub
-              </a>
-            </nav>
-          </div>
-        </header>
+        {shell === "ep" ? <EpHeader /> : <PawHeader />}
 
         <main id="main">{children}</main>
 
-        <footer className="border-t border-line py-12 text-sm">
-          <div className="wrap flex flex-wrap items-center justify-between gap-4 text-mut">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em]">
-              paw · Personal Agent Workflows
-            </span>
-            <span className="font-mono text-[11px]">
-              An open-source AI SDLC starter kit. MIT.
-            </span>
-          </div>
-        </footer>
+        {shell === "ep" ? <EpFooter /> : <PawFooter />}
       </body>
     </html>
   );

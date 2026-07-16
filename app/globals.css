@@ -129,6 +129,87 @@
   .btn.line:hover {
     background: var(--card);
   }
+  .btn.sm {
+    padding: 9px 18px;
+    font-size: 13.5px;
+  }
+
+  /* ---- shared chrome (both shells) ---- */
+  .mark {
+    font-family: var(--fd), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--ink);
+  }
+  /* the point: a small ink dot ringed in hair, the EP signature mark */
+  .pt {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ink);
+    position: relative;
+    display: inline-block;
+  }
+  .pt::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1.5px solid var(--hair);
+  }
+  .nav-link {
+    color: var(--mut);
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    color: var(--ink);
+  }
+
+  /* footer grid, ported from effulgentpoint.com */
+  .f-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 28px;
+  }
+  .f-col h3 {
+    font-family: var(--fm), ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mut);
+    margin-bottom: 13px;
+  }
+  .f-col a {
+    display: block;
+    color: var(--mut);
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+  .f-col a:hover {
+    color: var(--ink);
+  }
+  .f-tag {
+    color: var(--mut);
+    font-size: 14px;
+    max-width: 250px;
+    margin-top: 10px;
+  }
+  .fine {
+    margin-top: 36px;
+    font-family: var(--fm), ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--mut);
+  }
+}
+
+@media (max-width: 720px) {
+  .f-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* ===========================================================================

@@ -1,0 +1,26 @@
+# paw: Personal Agent Workflows
+
+> paw is an open-source AI SDLC starter kit: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right. Standards are enforced, not suggested.
+
+Canonical site: https://getpaw.dev
+Source: https://github.com/Effulgent-Point/paw
+An Effulgent Point project: https://effulgentpoint.com
+
+## Pages
+- [Home](https://getpaw.dev/): what paw is, the 60-second pitch, and the install one-liner.
+- [Tutorial](https://getpaw.dev/tutorial): nine interactive tracks generated from the paw CLI tutorial, so the web never drifts from the tool.
+- [Catalog](https://getpaw.dev/catalog): every agent, skill, hook, and CLI command in the kit, searchable and filterable.
+- [Install](https://getpaw.dev/install): requirements, clone, run ./paw setup, and the first run.
+
+## What is inside
+- 18 specialized agents: an architect, a planner, a builder, reviewers, a merge-resolver, and more, each with a narrow job and scoped permissions.
+- 7 skill bundles: reusable capability packs loaded on demand.
+- Enforcement hooks: gates that fire on real events so quality is enforced by the tooling.
+- A CLI: paw setup, paw tutorial, paw check, paw gate, paw doctor, paw init, and more.
+
+## Install
+```
+git clone https://github.com/Effulgent-Point/paw.git ~/paw
+cd ~/paw
+./paw setup
+```
