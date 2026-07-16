@@ -10,6 +10,7 @@ import { PawHeader } from "@/components/chrome/PawHeader";
 import { PawFooter } from "@/components/chrome/PawFooter";
 import { EpHeader } from "@/components/chrome/EpHeader";
 import { EpFooter } from "@/components/chrome/EpFooter";
+import { ConsolePaw } from "@/components/ui/ConsolePaw";
 
 // Optical Bench type system, exposed as the --fd / --fb / --fm CSS variables
 // that globals.css and tailwind.config.ts reference.
@@ -101,6 +102,7 @@ export default async function RootLayout({
         >
           Skip to main content
         </a>
+        <ConsolePaw />
 
         {shell === "ep" ? <EpHeader /> : <PawHeader />}
 

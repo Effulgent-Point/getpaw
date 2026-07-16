@@ -492,3 +492,52 @@
 .deck-hint { opacity: 0.55; }
 .deck-actions { display: inline-flex; gap: 8px; }
 @media (max-width: 560px) { .deck-hint { display: none; } }
+
+/* ---- home animated terminal ---- */
+.pawterm {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #12161a;
+  max-width: 640px;
+}
+.pawterm-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  background: #0d1013;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.pawterm-dot { width: 11px; height: 11px; border-radius: 50%; background: #2c333a; }
+.pawterm-title {
+  margin-left: 8px;
+  font-family: var(--fm), monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6b7681;
+}
+.pawterm-body {
+  margin: 0;
+  padding: 16px 18px;
+  font-family: var(--fm), ui-monospace, monospace;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #d8dfdc;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.pt-line { min-height: 1.7em; }
+.pt-cmd { color: #eafbe0; }
+.pt-dim { color: #77828d; }
+.pt-ok { color: #7bd88f; }
+.pt-warn { color: #e0b15e; }
+.pt-bold { color: #ffffff; font-weight: 700; }
+.pt-caret {
+  color: #5dc863;
+  margin-left: 2px;
+  animation: ptcaret 1s steps(1) infinite;
+}
+@keyframes ptcaret { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pt-caret { animation: none; } }

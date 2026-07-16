@@ -3,6 +3,8 @@ import Link from "next/link";
 import { CATALOG_COUNTS } from "@/data/catalog";
 import { CopyBlock } from "@/components/CopyBlock";
 import { GITHUB_URL } from "@/components/chrome/nav";
+import { PawTerminal } from "@/components/ui/PawTerminal";
+import { StarCount } from "@/components/ui/StarCount";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -63,8 +65,13 @@ export default function Home() {
             rel="noreferrer"
           >
             Star on GitHub
+            <StarCount />
           </a>
         </div>
+      </section>
+
+      <section className="wrap pb-10">
+        <PawTerminal />
       </section>
 
       <section className="wrap pb-6">
