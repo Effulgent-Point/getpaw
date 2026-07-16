@@ -130,3 +130,101 @@
     background: var(--card);
   }
 }
+
+/* ===========================================================================
+   Tutorial (workstream: feat/tutorial). Scoped to .tut-root so the tutorial's
+   light/dark toggle never affects the light-only sibling pages. Owned by
+   app/tutorial/*, components/tutorial/*, lib/tutorial/*.
+   =========================================================================== */
+.tut-root {
+  --tut-page-bg: #f2f5f4;
+  --tut-fg: #1e2422;
+  --tut-dim: #7c8681;
+  --tut-line: #dde3e0;
+  --tut-hair: #c8d0cc;
+  --tut-term-bg: #ffffff;
+  --tut-term-fg: #1e2422;
+  --tut-elev: #ffffff;
+  --tut-c1: #0e6e68; /* teal    (CYAN)       */
+  --tut-c2: #2e7d46; /* green   (GREEN)      */
+  --tut-c3: #8a5300; /* amber   (YELLOW)     */
+  --tut-c4: #7c1fa2; /* magenta (MAGENTA)    */
+  --tut-c5: #191d1b; /* ink     (BOLD_WHITE) */
+  --tut-red: #b3261e;
+  background: var(--tut-page-bg);
+  color: var(--tut-fg);
+}
+.tut-root[data-theme="dark"] {
+  --tut-page-bg: #0f1216;
+  --tut-fg: #e7ecea;
+  --tut-dim: #77828d;
+  --tut-line: #262b31;
+  --tut-hair: #2e343b;
+  --tut-term-bg: #161a20;
+  --tut-term-fg: #d8dfdc;
+  --tut-elev: #12151a;
+  --tut-c1: #4fd0c5;
+  --tut-c2: #7bd88f;
+  --tut-c3: #e0b15e;
+  --tut-c4: #c08be0;
+  --tut-c5: #ffffff;
+  --tut-red: #f0757f;
+}
+
+/* colored terminal spans (from lib/tutorial/render.ts) */
+.tc1 { color: var(--tut-c1); }
+.tc2 { color: var(--tut-c2); }
+.tc3 { color: var(--tut-c3); }
+.tc4 { color: var(--tut-c4); }
+.tc5 { color: var(--tut-c5); }
+.tdim { color: var(--tut-dim); }
+.tred { color: var(--tut-red); }
+.tbold { font-weight: 700; }
+
+.tut-eyebrow {
+  font-family: var(--fm), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tut-dim);
+}
+.tut-rule {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #440154, #3b528b, #21908c, #5dc863, #fde725);
+}
+.tut-term {
+  background: var(--tut-term-bg);
+  color: var(--tut-term-fg);
+  border: 1px solid var(--tut-line);
+  border-radius: 10px;
+}
+.tut-pre {
+  font-family: var(--fm), ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre;
+  tab-size: 2;
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .tut-pre { font-size: 12px; }
+}
+.tut-caret {
+  display: inline-block;
+  color: var(--tut-c1);
+  animation: tutCaret 1s steps(1) infinite;
+}
+@keyframes tutCaret {
+  50% { opacity: 0; }
+}
+.tut-fade { animation: tutFade 0.32s ease both; }
+@keyframes tutFade {
+  from { opacity: 0; transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tut-fade,
+  .tut-caret { animation: none !important; }
+}
