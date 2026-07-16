@@ -7,6 +7,8 @@ export default [
   {
     ignores: [
       ".next/**",
+      ".next.back*/**",
+      "**/*.back",
       "node_modules/**",
       "next-env.d.ts",
       // Generated tutorial data mirrors: not hand-authored, don't lint.

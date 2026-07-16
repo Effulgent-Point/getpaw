@@ -22,6 +22,9 @@ const securityHeaders = [
 
 const nextConfig = {
   reactStrictMode: true,
+  // Enables `next/root-params`, so the host-derived shell segment (app/[shell])
+  // can be read without headers() and pages stay statically generated.
+  experimental: { rootParams: true },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

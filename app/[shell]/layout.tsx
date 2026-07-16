@@ -4,7 +4,7 @@ import {
   Atkinson_Hyperlegible,
   IBM_Plex_Mono,
 } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { getShell } from "@/lib/host";
 import { PawHeader } from "@/components/chrome/PawHeader";
 import { PawFooter } from "@/components/chrome/PawFooter";
@@ -74,6 +74,12 @@ const JSON_LD = {
     url: "https://effulgentpoint.com/",
   },
 };
+
+// Prebuild both shells so every route can be served as static HTML per host.
+// middleware.ts maps the request host to the matching /paw or /ep prefix.
+export function generateStaticParams() {
+  return [{ shell: "paw" }, { shell: "ep" }];
+}
 
 export default async function RootLayout({
   children,
