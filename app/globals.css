@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Optical Bench design language, ported from effulgentpoint.com.
+  Fonts are injected as CSS variables by next/font in app/layout.tsx:
+    --fd  Bricolage Grotesque (display)
+    --fb  Atkinson Hyperlegible (body)
+    --fm  IBM Plex Mono (mono)
+*/
+
+:root {
+  --paper: #f5f7f6;
+  --card: #ffffff;
+  --ink: #191d1b;
+  --mut: #5e6a66;
+  --line: #dde3e0;
+  --hair: #c8d0cc;
+  /* the viridis dispersion */
+  --sp1: #440154;
+  --sp2: #3b528b;
+  --sp3: #21908c;
+  --sp4: #5dc863;
+  --sp5: #fde725;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--fb), ui-sans-serif, system-ui, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.62;
+    overflow-x: clip;
+  }
+  :focus-visible {
+    outline: 2px solid var(--sp2);
+    outline-offset: 3px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--fd), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* mono uppercase micro-labels */
+  .eyebrow {
+    font-family: var(--fm), ui-monospace, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--mut);
+  }
+  .label {
+    font-family: var(--fm), ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--mut);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* the spectral tick + full-width spectral rule */
+  .tick {
+    display: inline-block;
+    width: 26px;
+    height: 4px;
+    vertical-align: middle;
+    margin-right: 10px;
+    background: linear-gradient(
+      90deg,
+      var(--sp1),
+      var(--sp2),
+      var(--sp3),
+      var(--sp4),
+      var(--sp5)
+    );
+  }
+  .spectral-rule {
+    height: 3px;
+    width: 100%;
+    border: 0;
+    background: linear-gradient(
+      90deg,
+      var(--sp1),
+      var(--sp2),
+      var(--sp3),
+      var(--sp4),
+      var(--sp5)
+    );
+  }
+
+  /* buttons */
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 13px 26px;
+    border-radius: 4px;
+    border: 2px solid var(--ink);
+    cursor: pointer;
+    transition: background 0.16s;
+  }
+  .btn:hover {
+    background: #2a312e;
+  }
+  .btn.line {
+    background: none;
+    color: var(--ink);
+  }
+  .btn.line:hover {
+    background: var(--card);
+  }
+}
