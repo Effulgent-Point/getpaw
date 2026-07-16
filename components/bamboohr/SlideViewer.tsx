@@ -8,6 +8,9 @@ export type Slide = {
   subtitle?: string;
   bullets?: string[];
   img?: string;
+  /** Full text of an image slide for assistive tech. Fill this in when using
+   *  `img` so blind attendees get the same content sighted ones see. */
+  alt?: string;
 };
 
 /**
@@ -67,6 +70,19 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
     return () => document.removeEventListener("fullscreenchange", onFs);
   }, []);
 
+  // Guard against an empty/not-yet-loaded deck so the component never throws.
+  if (n === 0) {
+    return (
+      <div className="deck">
+        <div className="deck-stage">
+          <div className="deck-text">
+            <h3 className="deck-title">No slides yet</h3>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const s = slides[i];
 
   return (
@@ -80,8 +96,19 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
     >
       <div className="deck-stage" aria-live="polite">
         {s.img ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={s.img} alt={s.title} />
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={s.img} alt={s.alt ?? s.title} />
+            {/* Keep the slide's text available to AT even for image slides. */}
+            {(s.subtitle || (s.bullets && s.bullets.length > 0)) && (
+              <div className="sr-only">
+                {s.subtitle}
+                {s.bullets && s.bullets.length > 0
+                  ? ` ${s.bullets.join(". ")}`
+                  : ""}
+              </div>
+            )}
+          </>
         ) : (
           <div className="deck-text">
             {s.kicker && <p className="deck-kicker">{s.kicker}</p>}

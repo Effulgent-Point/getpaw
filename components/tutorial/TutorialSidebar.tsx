@@ -50,6 +50,7 @@ export function TutorialSidebar({
               {marker}
             </span>
             {section}
+            {isDone && <span className="sr-only"> (completed)</span>}
           </button>
         );
       })}

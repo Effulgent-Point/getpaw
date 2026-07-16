@@ -5,7 +5,11 @@
 // Matches on title / section / track / body, ranked title-first.
 // ---------------------------------------------------------------------------
 
-import { TRACKS } from "@/lib/tutorial/data";
+// Import the slim, build-time SEARCH_INDEX (summary + flattened text only), not
+// the full TRACKS corpus (page bodies + art). This module is loaded lazily
+// (dynamic import in TutorialSearch), so none of this ships until a reader
+// actually opens the search modal.
+import { SEARCH_INDEX } from "@/lib/tutorial/search-index";
 
 export interface SearchResult {
   trackId: string;
@@ -22,21 +26,16 @@ interface IndexEntry extends Omit<SearchResult, "snippet"> {
   haystack: string;
 }
 
-const INDEX: IndexEntry[] = TRACKS.flatMap((track) =>
-  track.pages.map((page, pageIndex) => {
-    const text = page.body.join(" ").replace(/\s+/g, " ").trim();
-    return {
-      trackId: track.id,
-      trackTitle: track.title,
-      trackIcon: track.icon,
-      pageIndex,
-      section: page.section,
-      title: page.title,
-      text,
-      haystack: `${track.title} ${page.section} ${page.title} ${text}`.toLowerCase(),
-    };
-  }),
-);
+const INDEX: IndexEntry[] = SEARCH_INDEX.map((e) => ({
+  trackId: e.trackId,
+  trackTitle: e.trackTitle,
+  trackIcon: e.trackIcon,
+  pageIndex: e.pageIndex,
+  section: e.section,
+  title: e.title,
+  text: e.text,
+  haystack: `${e.trackTitle} ${e.section} ${e.title} ${e.text}`.toLowerCase(),
+}));
 
 function makeSnippet(text: string, q: string): string {
   if (!text) return "";

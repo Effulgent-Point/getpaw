@@ -31,6 +31,9 @@ export function CopyBlock({ code }: { code: string }) {
 
   return (
     <div className="relative rounded-lg border border-line bg-card">
+      <span role="status" aria-live="polite" className="sr-only">
+        {copied ? "Copied to clipboard" : ""}
+      </span>
       <button
         type="button"
         onClick={copy}

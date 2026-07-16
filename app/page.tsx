@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { CATALOG_COUNTS } from "@/data/catalog";
 import { CopyBlock } from "@/components/CopyBlock";
@@ -62,10 +63,12 @@ export default function Home() {
             className="btn line"
             href={GITHUB_URL}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Star on GitHub
-            <StarCount />
+            <Suspense fallback={null}>
+              <StarCount />
+            </Suspense>
           </a>
         </div>
       </section>
@@ -84,29 +87,28 @@ export default function Home() {
       </section>
 
       <section className="wrap pb-16 pt-8">
-        <span className="label">
+        <h2 className="label">
           <span className="tick" />
           Install in under a minute
-        </span>
+        </h2>
         <div className="mt-5 max-w-[620px]">
           <CopyBlock code={INSTALL} />
         </div>
         <p className="mt-4 text-[15px] text-mut">
-          Then open the walkthrough with{" "}
-          <code className="font-mono text-ink">paw tutorial --web</code>, or try
-          it here first on the{" "}
+          Try the polished walkthrough here on the{" "}
           <Link href="/tutorial" className="underline">
             hosted tutorial
           </Link>
-          .
+          , or run it locally after install with{" "}
+          <code className="font-mono text-ink">paw tutorial --web</code>.
         </p>
       </section>
 
       <section className="wrap pb-24">
-        <span className="label">
+        <h2 className="label">
           <span className="tick" />
           What is in the kit
-        </span>
+        </h2>
         <div className="mt-6 grid gap-6 sm:grid-cols-3">
           {PILLARS.map((p) => (
             <Link

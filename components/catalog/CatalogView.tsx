@@ -131,6 +131,7 @@ export function CatalogView() {
         onTierChange={setActiveTier}
       />
 
+      <h2 className="sr-only">Results</h2>
       <p className="font-mono text-[12px] text-mut">
         {results.length} {results.length === 1 ? "result" : "results"}
       </p>

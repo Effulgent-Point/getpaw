@@ -30,3 +30,7 @@ next-env.d.ts
 .vscode/
 .idea/
 .vercel
+
+# session backups
+*.back
+.next.back/

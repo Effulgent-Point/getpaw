@@ -29,16 +29,16 @@ export function PawFooter() {
         </div>
         <div className="f-col">
           <h3>Source</h3>
-          <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
-          <a href={LICENSE_URL} target="_blank" rel="noreferrer">
+          <a href={LICENSE_URL} target="_blank" rel="noopener noreferrer">
             License (MIT)
           </a>
         </div>
         <div className="f-col">
           <h3>Made by</h3>
-          <a href={EP_URL} target="_blank" rel="noreferrer">
+          <a href={EP_URL} target="_blank" rel="noopener noreferrer">
             Effulgent Point
           </a>
         </div>

@@ -45,10 +45,10 @@ export default function InstallPage() {
       </section>
 
       <section className="wrap pb-6">
-        <span className="label">
+        <h2 className="label">
           <span className="tick" />
           Requirements
-        </span>
+        </h2>
         <ul className="mt-5 flex flex-wrap gap-x-8 gap-y-2 font-mono text-[13px] text-mut">
           {REQUIREMENTS.map((r) => (
             <li key={r} className="flex items-center gap-2">
@@ -65,10 +65,10 @@ export default function InstallPage() {
       <section className="wrap py-10">
         <ol className="grid gap-10">
           <li>
-            <span className="label">
+            <h2 className="label">
               <span className="tick" />
               1 &middot; Clone and set up
-            </span>
+            </h2>
             <div className="mt-4 max-w-[640px]">
               <CopyBlock code={CLONE} />
             </div>
@@ -78,10 +78,10 @@ export default function InstallPage() {
             </p>
           </li>
           <li>
-            <span className="label">
+            <h2 className="label">
               <span className="tick" />
               2 &middot; First run
-            </span>
+            </h2>
             <div className="mt-4 max-w-[640px]">
               <CopyBlock code={FIRST_RUN} />
             </div>
@@ -107,7 +107,7 @@ export default function InstallPage() {
             className="btn"
             href={GITHUB_URL}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Star on GitHub
           </a>

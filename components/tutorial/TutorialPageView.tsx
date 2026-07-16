@@ -76,7 +76,14 @@ export function TutorialPageView({
         </div>
 
         <div className="overflow-x-auto px-4 py-4 sm:px-5">
-          {artRows.length > 0 && <Pre rows={artRows} className="mb-1" />}
+          {/* Decorative ASCII art: hidden from AT so a screen reader doesn't
+              read the picture character-by-character. The body below always
+              carries the same information as real text. */}
+          {artRows.length > 0 && (
+            <div aria-hidden="true">
+              <Pre rows={artRows} className="mb-1" />
+            </div>
+          )}
           {bodyRows.length > 0 && <Pre rows={bodyRows} />}
         </div>
       </div>

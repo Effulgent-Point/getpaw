@@ -238,7 +238,7 @@
 .tut-root[data-theme="dark"] {
   --tut-page-bg: #0f1216;
   --tut-fg: #e7ecea;
-  --tut-dim: #77828d;
+  --tut-dim: #838e99; /* >=4.5:1 on term/elev/page dark surfaces (WCAG 1.4.3) */
   --tut-line: #262b31;
   --tut-hair: #2e343b;
   --tut-term-bg: #161a20;
@@ -487,6 +487,12 @@
   cursor: pointer;
 }
 .deck-bar button:disabled { opacity: 0.4; cursor: not-allowed; }
+/* High-contrast focus ring against the dark-green deck bar (WCAG 1.4.11): the
+   global blue --sp2 ring computes to only ~2:1 here, so use a pale tone. */
+.deck-bar button:focus-visible {
+  outline: 2px solid #eafbe0;
+  outline-offset: 2px;
+}
 .deck:fullscreen { display: flex; flex-direction: column; background: #0b2c1e; }
 .deck:fullscreen .deck-stage { flex: 1; aspect-ratio: auto; }
 .deck-hint { opacity: 0.55; }

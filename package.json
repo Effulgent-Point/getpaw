@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "gen": "node scripts/gen-tutorial.mjs",
     "gen:check": "node scripts/gen-tutorial.mjs && git diff --exit-code -- lib/tutorial/data.ts"
@@ -22,8 +22,8 @@
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^15.1.6",
-    "postcss": "^8.4.49",
+    "eslint-config-next": "^16.2.10",
+    "postcss": "^8.5.10",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.0"
   }

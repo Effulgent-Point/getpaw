@@ -116,7 +116,7 @@ export function CatalogFilters({
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
             placeholder="Search the catalog"
-            className="w-full rounded border border-line bg-card px-3 py-2 font-mono text-[13px] text-ink placeholder:text-mut focus:border-sp2 focus:outline-none"
+            className="w-full rounded border border-line bg-card px-3 py-2 font-mono text-[13px] text-ink placeholder:text-mut focus:border-sp2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sp2 focus-visible:ring-offset-2"
           />
         </label>
       </div>

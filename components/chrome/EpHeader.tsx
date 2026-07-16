@@ -8,6 +8,8 @@ const EP_LINKS = [
   { href: `${EP_URL}/work/`, label: "Work" },
   { href: `${EP_URL}/services/`, label: "Services" },
   { href: `${EP_URL}/strategy/`, label: "Strategy" },
+  { href: `${EP_URL}/coaching/`, label: "Coaching" },
+  { href: `${EP_URL}/nonprofits/`, label: "Nonprofits" },
   { href: `${EP_URL}/about/`, label: "About" },
 ];
 
@@ -64,7 +66,7 @@ export function EpHeader() {
               href={GITHUB_URL}
               className="nav-link"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               GitHub
             </a>

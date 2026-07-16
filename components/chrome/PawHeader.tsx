@@ -23,7 +23,7 @@ export function PawHeader() {
             href={GITHUB_URL}
             className="nav-link"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             GitHub
           </a>

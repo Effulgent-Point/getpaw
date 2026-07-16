@@ -28,7 +28,11 @@ export function CopyButton({ text }: { text: string }) {
   }
 
   return (
-    <button
+    <>
+      <span role="status" aria-live="polite" className="sr-only">
+        {copied ? "Copied to clipboard" : ""}
+      </span>
+      <button
       type="button"
       onClick={copy}
       aria-label={copied ? "Copied" : "Copy commands to clipboard"}
@@ -53,5 +57,6 @@ export function CopyButton({ text }: { text: string }) {
       )}
       {copied ? "Copied" : "Copy"}
     </button>
+    </>
   );
 }

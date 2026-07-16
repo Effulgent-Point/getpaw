@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   description:
     "A Tech Forge training on paw and building your own agents, made for the BambooHR team. Quickstart, live deck, and the AI principles you already know, rendered in code.",
   alternates: { canonical: "/bamboohr" },
+  // Private client training hub: reachable by direct link, but kept out of
+  // search results so it never surfaces under the public OSS domain.
+  robots: { index: false, follow: false },
 };
 
 // BambooHR's three AI development principles, mapped to what paw actually does.
@@ -180,7 +183,7 @@ export default function BambooHrPage() {
             <a
               href="https://github.com/Effulgent-Point/paw"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="bamboo-btn line"
               style={{ color: "var(--bamboo-deep)", borderColor: "var(--bamboo-line)" }}
             >

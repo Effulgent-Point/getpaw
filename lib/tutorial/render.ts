@@ -85,34 +85,70 @@ function dimComment(line: string): Segment[] {
 
 // --- copy-to-clipboard -------------------------------------------------------
 
+// Real, runnable shell commands only. Note "> " is deliberately NOT included:
+// in the tutorial content "> " marks a narrative bullet ("> run git rebase
+// main" / "> Use the code-reviewer agent"), i.e. text to TYPE INTO an AI chat,
+// never a shell command to paste. Including it made whole pages "copyable" and
+// leaked prose into the clipboard. "$ " is a real shell prompt and is stripped.
 const COMMAND_RE =
-  /^(\$ |> |git |paw |\.\/paw|\.\/setup|python3|ruff|cd |echo |curl |npm |ls |cat )/;
+  /^(\$ |git |paw |\.\/paw|\.\/setup|python3|ruff|cd |echo |curl |npm |ls |cat )/;
 
-/** A page's body is copyable when it contains at least one command-like line. */
+const PROMPT_RE = /^(\$ |> )/;
+
+/**
+ * Extract only the actual command lines from a page body (plus any more-
+ * indented continuation lines), stripping a leading "$ " prompt. This walks the
+ * body instead of dedenting the whole thing, so narrative prose interleaved
+ * with commands (e.g. "Step 1: Clone paw") never lands in the clipboard.
+ */
+function extractCommands(page: TutorialPage): string[] {
+  const out: string[] = [];
+  let capturing = false;
+  let baseIndent = 0;
+
+  for (const line of page.body) {
+    const trimmed = line.trimStart();
+    const indent = line.length - trimmed.length;
+    const isBlank = trimmed === "";
+    const isCommand = COMMAND_RE.test(trimmed);
+
+    if (!capturing) {
+      if (isCommand) {
+        capturing = true;
+        baseIndent = indent;
+        out.push(trimmed.replace(PROMPT_RE, ""));
+      }
+      continue;
+    }
+
+    // capturing
+    if (isBlank) {
+      capturing = false;
+    } else if (indent > baseIndent) {
+      // continuation of the current command, keep its relative indent
+      out.push(line.slice(baseIndent).replace(PROMPT_RE, ""));
+    } else if (isCommand) {
+      // a new command at the same (or lesser) indent
+      baseIndent = indent;
+      out.push(trimmed.replace(PROMPT_RE, ""));
+    } else {
+      // prose at or below the command indent ends the block
+      capturing = false;
+    }
+  }
+
+  return out;
+}
+
+/** A page's body is copyable when it contains at least one real command line. */
 export function isCopyable(page: TutorialPage): boolean {
   return page.body.some((l) => COMMAND_RE.test(l.trimStart()));
 }
 
 /**
- * Clipboard text for a copyable page: outer blank lines trimmed, dedented to
- * the common indent, and leading "$ " / "> " prompts stripped so the commands
- * paste cleanly. Multi-line commands are preserved verbatim.
+ * Clipboard text for a copyable page: only the runnable command lines, with
+ * "$ " prompts stripped, so what you paste actually runs.
  */
 export function copyText(page: TutorialPage): string {
-  const body = page.body;
-  let start = 0;
-  let end = body.length;
-  while (start < end && body[start].trim() === "") start++;
-  while (end > start && body[end - 1].trim() === "") end--;
-  const lines = body.slice(start, end);
-  if (lines.length === 0) return "";
-
-  const indents = lines
-    .filter((l) => l.trim() !== "")
-    .map((l) => l.length - l.trimStart().length);
-  const minIndent = indents.length ? Math.min(...indents) : 0;
-
-  return lines
-    .map((l) => l.slice(minIndent).replace(/^(\$ |> )/, ""))
-    .join("\n");
+  return extractCommands(page).join("\n");
 }

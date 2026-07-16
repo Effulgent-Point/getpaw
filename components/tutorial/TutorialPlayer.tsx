@@ -7,18 +7,32 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { TRACK_IDS, getTrack, type Track } from "@/lib/tutorial/data";
+import type { Track } from "@/lib/tutorial/data";
 import { recordVisit } from "@/lib/tutorial/progress";
 import { ThemeToggle } from "./ThemeToggle";
 import { TutorialPageView } from "./TutorialPageView";
 import { TutorialSearch } from "./TutorialSearch";
 import { TutorialSidebar } from "./TutorialSidebar";
 
-export function TutorialPlayer({ track }: { track: Track }) {
+interface NextTrack {
+  id: string;
+  title: string;
+  icon: string;
+}
+
+export function TutorialPlayer({
+  track,
+  initialPage = 0,
+  nextTrack,
+}: {
+  track: Track;
+  initialPage?: number;
+  nextTrack?: NextTrack;
+}) {
   const router = useRouter();
   const total = track.pages.length;
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(initialPage);
   const [finished, setFinished] = useState(false);
   const visited = useRef<Set<number>>(new Set());
   const navigated = useRef(false); // true once the reader moves pages (client-side)
@@ -38,21 +52,12 @@ export function TutorialPlayer({ track }: { track: Track }) {
   // The SSR / deep-linked landing page always shows its full title.
   const animateTitle = navigated.current && !visited.current.has(page);
 
-  // Deep link: honor ?p= on mount (start at 0 for clean hydration, then jump).
-  useEffect(() => {
-    try {
-      const raw = new URLSearchParams(window.location.search).get("p");
-      if (raw !== null) {
-        const n = Number.parseInt(raw, 10);
-        if (Number.isInteger(n) && n >= 0 && n < total) setPage(n);
-      }
-    } catch {
-      /* ignore */
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [track.id]);
+  // A visually-hidden status message so assistive tech is told what changed on
+  // every Next/Back/jump/search navigation (SC 4.1.3). Kept in state so the
+  // aria-live region re-announces even when the text would otherwise be stable.
+  const [liveMsg, setLiveMsg] = useState("");
 
-  // Record progress, sync the URL, mark visited, scroll into view on change.
+  // Record progress, sync the URL, mark visited, announce + move focus, scroll.
   useEffect(() => {
     visited.current.add(page);
     recordVisit(track.id, page, total);
@@ -62,12 +67,21 @@ export function TutorialPlayer({ track }: { track: Track }) {
     } catch {
       /* ignore */
     }
+    setLiveMsg(
+      finished
+        ? `${track.title} complete`
+        : `Page ${page + 1} of ${total}: ${current.title}`,
+    );
     if (firstRender.current) {
       firstRender.current = false;
       return;
     }
+    // Move focus into the new content and scroll it into view so keyboard and
+    // screen-reader users land on what changed (SC 2.4.3).
+    mainRef.current?.focus();
     mainRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, [page, track.id, total]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, track.id, total, finished]);
 
   function goNext() {
     if (finished) return;
@@ -125,6 +139,14 @@ export function TutorialPlayer({ track }: { track: Track }) {
         router.push("/tutorial");
         return;
       }
+
+      // Single-character accelerators (n/p/s) are "active only on focus" of the
+      // tutorial content region, per WCAG 2.1.4. Arrow/Space/Home/End are not
+      // character keys and are exempt, so they stay globally available.
+      const charKey = e.key === "n" || e.key === "p" || e.key === "s";
+      const inRegion = mainRef.current?.contains(document.activeElement) ?? false;
+      if (charKey && !inRegion) return;
+
       if (finished) {
         if (e.key === "ArrowLeft" || e.key === "p") {
           e.preventDefault();
@@ -165,8 +187,6 @@ export function TutorialPlayer({ track }: { track: Track }) {
   });
 
   const pct = finished ? 100 : Math.round(((page + 1) / total) * 100);
-  const nextIdx = TRACK_IDS.indexOf(track.id) + 1;
-  const nextTrack = nextIdx < TRACK_IDS.length ? getTrack(TRACK_IDS[nextIdx]) : undefined;
 
   return (
     <div className="wrap py-8 lg:py-12">
@@ -218,7 +238,11 @@ export function TutorialPlayer({ track }: { track: Track }) {
         </aside>
 
         {/* content */}
-        <div ref={mainRef} className="min-w-0 scroll-mt-6">
+        <div ref={mainRef} tabIndex={-1} className="min-w-0 scroll-mt-6 outline-none">
+          {/* Status message for assistive tech on every navigation. */}
+          <div aria-live="polite" className="sr-only">
+            {liveMsg}
+          </div>
           {finished ? (
             <FinishPanel track={track} nextTrack={nextTrack} onReview={() => jumpTo(total - 1)} />
           ) : (
@@ -276,7 +300,7 @@ function FinishPanel({
   onReview,
 }: {
   track: Track;
-  nextTrack: Track | undefined;
+  nextTrack: NextTrack | undefined;
   onReview: () => void;
 }) {
   return (

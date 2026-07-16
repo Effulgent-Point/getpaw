@@ -25,7 +25,7 @@ export function EpFooter() {
               {item.label}
             </Link>
           ))}
-          <a href={GITHUB_URL} target="_blank" rel="noreferrer">
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
         </div>
@@ -38,13 +38,13 @@ export function EpFooter() {
         </div>
         <div className="f-col">
           <h3>Connect</h3>
-          <a href={GITHUB_ORG_URL} target="_blank" rel="noreferrer">
+          <a href={GITHUB_ORG_URL} target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
           <a
             href="https://www.linkedin.com/company/effulgent-point"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             LinkedIn
           </a>

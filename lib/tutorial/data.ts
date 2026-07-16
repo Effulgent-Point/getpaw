@@ -25,8 +25,8 @@ export interface TutorialPage {
   art?: string[];
   /** Color for the whole art block when artRowColors is absent. */
   artColor?: TutorialColor;
-  /** Per-row art colors (index-aligned with art). */
-  artRowColors?: TutorialColor[];
+  /** Per-row art colors (index-aligned with art); 0 means "use the block color". */
+  artRowColors?: (TutorialColor | 0)[];
   /** Prefix -> color: a body line whose trimStart() startsWith(prefix) is colored + bold. */
   highlight?: Record<string, TutorialColor>;
   /** When true, the title types out once on first visit. */

@@ -18,6 +18,9 @@ export function CopyCmd({ cmd }: { cmd: string }) {
 
   return (
     <div className="bamboo-cmd">
+      <span role="status" aria-live="polite" className="sr-only">
+        {done ? "Command copied to clipboard" : ""}
+      </span>
       <code>{cmd}</code>
       <button
         className="copy"

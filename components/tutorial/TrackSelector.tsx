@@ -5,7 +5,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { TRACKS } from "@/lib/tutorial/data";
+import { TRACK_SUMMARIES } from "@/lib/tutorial/summaries";
 import {
   PROGRESS_EVENT,
   percentComplete,
@@ -16,10 +16,14 @@ import {
 import { ThemeToggle } from "./ThemeToggle";
 import { TutorialSearch } from "./TutorialSearch";
 
-const TOTAL_MIN = TRACKS.reduce(
-  (sum, t) => sum + (Number.parseInt(t.time.replace(/\D/g, ""), 10) || 0),
+// Parse the first integer in a time string ("~5 min" -> 5). Taking the first
+// match (not stripping every non-digit) keeps a future range like "10-15 min"
+// from collapsing into "1015".
+const TOTAL_MIN = TRACK_SUMMARIES.reduce(
+  (sum, t) => sum + (Number.parseInt(t.time.match(/\d+/)?.[0] ?? "0", 10) || 0),
   0,
 );
+const TOTAL_PAGES = TRACK_SUMMARIES.reduce((n, t) => n + t.pageCount, 0);
 
 export function TrackSelector() {
   const [progress, setProgress] = useState<ProgressMap>({});
@@ -39,7 +43,7 @@ export function TrackSelector() {
     };
   }, [refresh]);
 
-  const completed = TRACKS.filter((t) => progress[t.id]?.done).length;
+  const completed = TRACK_SUMMARIES.filter((t) => progress[t.id]?.done).length;
 
   return (
     <div className="wrap py-10 lg:py-16">
@@ -73,17 +77,17 @@ export function TrackSelector() {
         className="mb-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-y py-3 font-mono text-[12px]"
         style={{ borderColor: "var(--tut-line)", color: "var(--tut-dim)" }}
       >
-        <span>{TRACKS.length} tracks</span>
-        <span>{TRACKS.reduce((n, t) => n + t.pages.length, 0)} pages</span>
+        <span>{TRACK_SUMMARIES.length} tracks</span>
+        <span>{TOTAL_PAGES} pages</span>
         <span>about {TOTAL_MIN} min end to end</span>
         <span className="ml-auto" style={{ color: completed > 0 ? "var(--tut-c2)" : "inherit" }}>
-          {completed} of {TRACKS.length} complete
+          {completed} of {TRACK_SUMMARIES.length} complete
         </span>
       </div>
 
       {/* grid */}
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {TRACKS.map((track, i) => {
+        {TRACK_SUMMARIES.map((track, i) => {
           const p = progress[track.id];
           const pct = percentComplete(p);
           const done = !!p?.done;

@@ -45,15 +45,12 @@ export function readProgress(): ProgressMap {
   return read();
 }
 
-export function getTrackProgress(id: string): TrackProgress | undefined {
-  return read()[id];
-}
-
 /** Percent complete for a track (0..100), based on furthest page reached. */
 export function percentComplete(p: TrackProgress | undefined): number {
   if (!p || p.total <= 1) return p?.done ? 100 : 0;
   if (p.done) return 100;
-  return Math.round((p.max / (p.total - 1)) * 100);
+  // Clamp: a shrunk track (content regenerated) can otherwise yield >100%.
+  return Math.max(0, Math.min(100, Math.round((p.max / (p.total - 1)) * 100)));
 }
 
 export function recordVisit(
@@ -63,18 +60,15 @@ export function recordVisit(
 ): ProgressMap {
   const map = read();
   const prev = map[trackId];
+  // Only carry forward the stored max when the track shape is unchanged. If
+  // `total` differs (content.py was edited and data.ts regenerated), the old
+  // max may be out of range for the new page count, so discard it.
+  const prevMax = prev && prev.total === total ? prev.max : 0;
   map[trackId] = {
-    max: Math.max(prev?.max ?? 0, pageIndex),
-    done: (prev?.done ?? false) || pageIndex >= total - 1,
+    max: Math.max(prevMax, pageIndex),
+    done: (prev?.total === total && prev.done) || pageIndex >= total - 1,
     total,
   };
-  write(map);
-  return map;
-}
-
-export function resetTrack(trackId: string): ProgressMap {
-  const map = read();
-  delete map[trackId];
   write(map);
   return map;
 }
