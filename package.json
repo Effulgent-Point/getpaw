@@ -12,7 +12,7 @@
     "gen:check": "node scripts/gen-tutorial.mjs && git diff --exit-code -- lib/tutorial/data.ts"
   },
   "dependencies": {
-    "next": "15.1.6",
+    "next": "^16.2.10",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },

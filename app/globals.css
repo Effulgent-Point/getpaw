@@ -309,3 +309,186 @@
   .tut-fade,
   .tut-caret { animation: none !important; }
 }
+
+/* ===========================================================================
+   BambooHR training hub (/bamboohr). Scoped to .bamboo-root so its leaf-green
+   co-brand never leaks into the rest of the site. Owned by app/bamboohr/*,
+   components/bamboohr/*.
+   =========================================================================== */
+.bamboo-root {
+  --bamboo: #73c41d;        /* Leaf, Pantone 375C */
+  --bamboo-deep: #0f3d29;   /* dark green */
+  --bamboo-deep-2: #1c5c3a;
+  --bamboo-ink: #16261d;
+  --bamboo-mut: #5a6b60;
+  --bamboo-soft: #eef6e6;   /* pale leaf wash */
+  --bamboo-line: #d7e4cc;
+}
+.bamboo-hero {
+  background:
+    radial-gradient(120% 140% at 15% 0%, rgba(115, 196, 29, 0.28), transparent 55%),
+    linear-gradient(150deg, var(--bamboo-deep), var(--bamboo-deep-2));
+  color: #f3faec;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.bamboo-hero .eyebrow,
+.bamboo-hero .bamboo-mut { color: #bfe6a3; }
+.bamboo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fm), ui-monospace, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bamboo-deep);
+  background: var(--bamboo);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.bamboo-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--bamboo-deep);
+  background: var(--bamboo);
+  padding: 13px 24px;
+  border-radius: 6px;
+  border: 2px solid var(--bamboo);
+  cursor: pointer;
+  transition: filter 0.16s;
+}
+.bamboo-btn:hover { filter: brightness(1.06); }
+.bamboo-btn.line {
+  background: transparent;
+  color: #f3faec;
+  border-color: rgba(191, 230, 163, 0.6);
+}
+.bamboo-btn.line:hover { background: rgba(191, 230, 163, 0.12); }
+.bamboo-card {
+  background: var(--card);
+  border: 1px solid var(--bamboo-line);
+  border-radius: 14px;
+  padding: 22px;
+}
+.bamboo-card .p-num {
+  font-family: var(--fd), sans-serif;
+  font-weight: 800;
+  color: var(--bamboo);
+  font-size: 26px;
+  line-height: 1;
+}
+.bamboo-cmd {
+  font-family: var(--fm), ui-monospace, monospace;
+  font-size: 13.5px;
+  background: var(--bamboo-deep);
+  color: #eafbe0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  overflow-x: auto;
+}
+.bamboo-cmd .copy {
+  flex: none;
+  font-family: var(--fm), monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bamboo-deep);
+  background: var(--bamboo);
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* ---- deck / slide viewer ---- */
+.deck {
+  background: var(--bamboo-deep);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(191, 230, 163, 0.25);
+}
+.deck-stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(90% 120% at 20% 0%, rgba(115, 196, 29, 0.18), transparent 60%),
+    linear-gradient(160deg, #0d3524, #17513a);
+  color: #f3faec;
+  padding: 6% 8%;
+}
+.deck-stage img { width: 100%; height: 100%; object-fit: contain; }
+.deck-kicker {
+  font-family: var(--fm), monospace;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bamboo);
+  margin-bottom: 14px;
+}
+.deck-title {
+  font-family: var(--fd), sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4.2vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.deck-sub {
+  color: #cfe8bf;
+  font-size: clamp(15px, 1.9vw, 20px);
+  margin-top: 14px;
+  max-width: 42ch;
+}
+.deck-bullets { margin-top: 20px; display: grid; gap: 10px; max-width: 46ch; }
+.deck-bullets li {
+  list-style: none;
+  padding-left: 26px;
+  position: relative;
+  font-size: clamp(14px, 1.7vw, 18px);
+  color: #e7f4dc;
+}
+.deck-bullets li::before {
+  content: "🎋";
+  position: absolute;
+  left: 0;
+  font-size: 0.9em;
+}
+.deck-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #0b2c1e;
+  color: #cfe8bf;
+  font-family: var(--fm), monospace;
+  font-size: 13px;
+}
+.deck-bar button {
+  font-family: var(--fm), monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bamboo-deep);
+  background: var(--bamboo);
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.deck-bar button:disabled { opacity: 0.4; cursor: not-allowed; }
+.deck:fullscreen { display: flex; flex-direction: column; background: #0b2c1e; }
+.deck:fullscreen .deck-stage { flex: 1; aspect-ratio: auto; }
+.deck-hint { opacity: 0.55; }
+.deck-actions { display: inline-flex; gap: 8px; }
+@media (max-width: 560px) { .deck-hint { display: none; } }
