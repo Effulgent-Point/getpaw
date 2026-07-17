@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 // Copyable command block styled in the light-only Optical Bench palette (the
 // tutorial's CopyButton is scoped to the tutorial's own --tut-* tokens, so it
@@ -8,10 +8,13 @@ import { useState } from "react";
 // (e.g. a paste-able prompt) so long lines wrap instead of scrolling sideways.
 export function CopyBlock({ code, prose = false }: { code: string; prose?: boolean }) {
   const [copied, setCopied] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   async function copy() {
+    let ok = false;
     try {
       await navigator.clipboard.writeText(code);
+      ok = true;
     } catch {
       const ta = document.createElement("textarea");
       ta.value = code;
@@ -20,14 +23,17 @@ export function CopyBlock({ code, prose = false }: { code: string; prose?: boole
       document.body.appendChild(ta);
       ta.select();
       try {
-        document.execCommand("copy");
+        ok = document.execCommand("copy");
       } catch {
-        /* give up quietly */
+        ok = false;
       }
       document.body.removeChild(ta);
     }
+    // Only confirm when the copy actually succeeded, so the button never lies.
+    if (!ok) return;
     setCopied(true);
-    window.setTimeout(() => setCopied(false), 1600);
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setCopied(false), 1600);
   }
 
   return (

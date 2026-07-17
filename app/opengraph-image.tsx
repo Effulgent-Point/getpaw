@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "paw, Personal Agent Workflows";
+export const alt = "paw, Personal Agent Workforce";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -34,7 +34,7 @@ export default function OpengraphImage() {
           }}
         >
           <div style={{ width: 54, height: 8, background: "linear-gradient(90deg,#440154,#3b528b,#21908c,#5dc863,#fde725)" }} />
-          Personal Agent Workflows
+          Personal Agent Workforce
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

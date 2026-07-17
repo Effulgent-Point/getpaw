@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CopyBlock } from "@/components/CopyBlock";
+import { AGENTS, CATALOG_COUNTS } from "@/data/catalog";
 import {
   AGENT_IDEAS,
   IDEA_GROUPS,
@@ -11,9 +12,15 @@ import {
 export const metadata: Metadata = {
   title: "Idea library",
   description:
-    "A menu of agent ideas to build, recipes for chaining them by role, and a prompt to find the agents you are missing. paw ships 18; here is where to go next.",
+    "The wider agent roster paw draws from: what ships in the box, plus dozens more worth building, with recipes to chain them and a prompt to find your own gaps.",
   alternates: { canonical: "/library" },
 };
+
+// Which library agents actually ship with paw today, matched by name against
+// the catalog so the "in paw" tags never drift from the real kit.
+const SHIPPED = new Set(AGENTS.map((a) => a.name));
+const SHIPPED_COUNT = AGENT_IDEAS.filter((i) => SHIPPED.has(i.name)).length;
+const TO_BUILD_COUNT = AGENT_IDEAS.length - SHIPPED_COUNT;
 
 export default function LibraryPage() {
   return (
@@ -26,48 +33,64 @@ export default function LibraryPage() {
         <h1 className="mt-5 max-w-[760px] font-display text-[clamp(32px,5vw,54px)] font-extrabold leading-[1.02] tracking-[-0.02em]">
           Steal these agents.
         </h1>
-        <p className="mt-4 max-w-[600px] text-[17px] text-mut">
-          paw ships 18 agents. Here are {AGENT_IDEAS.length} more ideas to build,
-          recipes for chaining them by role, and a prompt to find the ones you
-          are missing. Nothing here is required. It is a menu.
+        <p className="mt-4 max-w-[620px] text-[17px] text-mut">
+          paw ships a core {CATALOG_COUNTS.agents} agents. This is the wider
+          roster they come from: {AGENT_IDEAS.length} in all, the rest worth
+          building yourself. Recipes to chain them, and a prompt to find the ones
+          only you need. A menu, not a spec.
         </p>
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 border-y border-line py-4 font-mono text-[12px] text-mut">
-          <span>{AGENT_IDEAS.length} AGENT IDEAS</span>
-          <span>{IDEA_GROUPS.length} CATEGORIES</span>
-          <span>{ROLE_RECIPES.length} ROLE RECIPES</span>
+          <span>{AGENT_IDEAS.length} AGENTS</span>
+          <span>{SHIPPED_COUNT} SHIP WITH PAW</span>
+          <span>{TO_BUILD_COUNT} TO BUILD</span>
         </div>
       </section>
 
       <section className="wrap pb-16">
         <h2 className="label">
           <span className="tick" />
-          Agent ideas
+          The roster
         </h2>
-        <p className="mt-4 max-w-[620px] text-[15px] text-mut">
-          More jobs worth handing to a narrow, well-scoped agent, grouped by
-          where they earn their keep. Each is a starting point, not a spec.
+        <p className="mt-4 max-w-[640px] text-[15px] text-mut">
+          Jobs worth handing to a narrow, well-scoped agent, grouped by where
+          they earn their keep. The ones tagged{" "}
+          <span className="rounded border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-mut">
+            in paw
+          </span>{" "}
+          ship in the box. The rest are yours to build.
         </p>
         {IDEA_GROUPS.map((group) => {
           const ideas = AGENT_IDEAS.filter((i) => i.group === group);
+          if (ideas.length === 0) return null;
           return (
             <div key={group} className="mt-10">
               <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-mut">
                 {group}
               </h3>
               <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {ideas.map((idea) => (
-                  <div
-                    key={idea.name}
-                    className="rounded-lg border border-line bg-card p-5"
-                  >
-                    <div className="font-mono text-[13px] font-semibold text-ink">
-                      {idea.name}
+                {ideas.map((idea) => {
+                  const shipped = SHIPPED.has(idea.name);
+                  return (
+                    <div
+                      key={idea.name}
+                      className="rounded-lg border border-line bg-card p-5"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-mono text-[13px] font-semibold text-ink">
+                          {idea.name}
+                        </span>
+                        {shipped && (
+                          <span className="shrink-0 rounded border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.12em] text-mut">
+                            in paw
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-2 text-[14px] leading-relaxed text-mut">
+                        {idea.blurb}
+                      </p>
                     </div>
-                    <p className="mt-2 text-[14px] leading-relaxed text-mut">
-                      {idea.blurb}
-                    </p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           );
@@ -156,9 +179,9 @@ export default function LibraryPage() {
             {ECC.stats}
           </div>
           <p className="mt-3 text-[14.5px] leading-relaxed text-mut">
-            {ECC.tagline}. It opened my eyes to what was possible and got this
-            whole rabbit hole started. A good number of the ideas above trace
-            straight back to it. Thank you.
+            Billed as {ECC.tagline}, it opened my eyes to what was possible and
+            got this whole rabbit hole started. A good number of the ideas above
+            trace straight back to it. Thank you.
           </p>
           <span className="mt-4 inline-block font-mono text-[12px] text-ink underline">
             github.com/affaan-m/ecc

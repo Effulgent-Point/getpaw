@@ -1,8 +1,7 @@
-// Ideas and recipes for the /library page. paw ships 18 agents; these are more
-// ideas to build, drawn from the forge pipeline (getpaw's bigger sibling) and
-// real workflows. Nothing here is required, it is a menu to steal from.
-
-export type AgentIdea = { name: string; blurb: string; group: string };
+// Data for the /library page. This is the wider agent roster paw draws from:
+// some of these ship in the box (tagged on the page by matching the catalog),
+// the rest are ideas worth building. Drawn from the forge pipeline (getpaw's
+// bigger sibling) and real workflows. A menu to steal from, not a spec.
 
 export const IDEA_GROUPS = [
   "Research",
@@ -15,6 +14,12 @@ export const IDEA_GROUPS = [
   "Ship",
   "Ops & risk",
 ] as const;
+
+export type AgentIdea = {
+  name: string;
+  blurb: string;
+  group: (typeof IDEA_GROUPS)[number];
+};
 
 export const AGENT_IDEAS: AgentIdea[] = [
   // Research
@@ -127,6 +132,6 @@ export const ECC = {
   name: "everything claude code",
   handle: "@affaan-m",
   url: "https://github.com/affaan-m/ecc",
-  stats: "67 agents · 278+ skills · 211K+ stars",
-  tagline: "the harness-native operator system for agentic work",
+  stats: "230K+ stars · 35K forks",
+  tagline: "the agent harness performance optimization system for Claude Code and beyond",
 };

@@ -337,7 +337,7 @@ export const TRACKS: Track[] = [
           "    which hooks enforce as hard stops,",
           "    inside a context that sets the mindset.",
           "",
-          "  That is a personal agent workforce:",
+          "  That is a Personal Agent Workforce:",
           "  fast agents, real guardrails."
         ]
       },
@@ -379,8 +379,8 @@ export const TRACKS: Track[] = [
         "section": "Welcome",
         "body": [
           "",
-          "Personal Agent Workflows",
-          "a personal agent workforce",
+          "Personal Agent Workforce",
+          "a Personal Agent Workforce",
           "",
           "Your AI agent writes code fast.",
           "paw makes sure it writes code right.",

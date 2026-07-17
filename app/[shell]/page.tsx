@@ -39,7 +39,7 @@ export default function Home() {
       <section className="wrap py-20">
         <span className="eyebrow">
           <span className="tick" />
-          Personal Agent Workflows
+          Personal Agent Workforce
         </span>
         <h1 className="mt-5 max-w-[820px] font-display text-[clamp(38px,7vw,74px)] font-extrabold leading-[0.98] tracking-[-0.02em]">
           Your agent writes code fast.
@@ -48,7 +48,7 @@ export default function Home() {
         </h1>
         <hr className="spectral-rule my-8 max-w-[600px]" />
         <p className="max-w-[540px] text-[19px] text-mut">
-          An open-source personal agent workforce: standards that are enforced not
+          An open-source Personal Agent Workforce: standards that are enforced not
           suggested, {CATALOG_COUNTS.agents} specialized agents, {" "}
           {CATALOG_COUNTS.skills} skill bundles, git guardrails, and a CLI.
         </p>

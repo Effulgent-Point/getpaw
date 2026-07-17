@@ -130,7 +130,7 @@ export const SEARCH_INDEX: SearchIndexEntry[] = [
     "pageIndex": 12,
     "section": "How it fits",
     "title": "How it all fits",
-    "text": "Put together: agents do the work, load skills for expertise, follow rules as the source of truth, which hooks enforce as hard stops, inside a context that sets the mindset. That is a personal agent workforce: fast agents, real guardrails."
+    "text": "Put together: agents do the work, load skills for expertise, follow rules as the source of truth, which hooks enforce as hard stops, inside a context that sets the mindset. That is a Personal Agent Workforce: fast agents, real guardrails."
   },
   {
     "trackId": "terms",
@@ -148,7 +148,7 @@ export const SEARCH_INDEX: SearchIndexEntry[] = [
     "pageIndex": 0,
     "section": "Welcome",
     "title": "Welcome to paw",
-    "text": "Personal Agent Workflows a personal agent workforce Your AI agent writes code fast. paw makes sure it writes code right. This track covers what paw is and how it works."
+    "text": "Personal Agent Workforce a Personal Agent Workforce Your AI agent writes code fast. paw makes sure it writes code right. This track covers what paw is and how it works."
   },
   {
     "trackId": "learn",

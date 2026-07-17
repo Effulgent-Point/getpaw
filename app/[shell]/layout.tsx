@@ -35,19 +35,19 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://getpaw.dev"),
   title: {
-    default: "paw, Personal Agent Workflows",
+    default: "paw, Personal Agent Workforce",
     template: "%s · paw",
   },
   description:
-    "paw is an open-source personal agent workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
+    "paw is an open-source Personal Agent Workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
   applicationName: "paw",
   openGraph: {
     type: "website",
     siteName: "paw",
     url: "https://getpaw.dev",
-    title: "paw, Personal Agent Workflows",
+    title: "paw, Personal Agent Workforce",
     description:
-      "An open-source personal agent workforce: standards enforced not suggested, 18 agents, 7 skill bundles, hooks, and a CLI.",
+      "An open-source Personal Agent Workforce: standards enforced, not suggested, 18 agents, 7 skill bundles, hooks, and a CLI.",
   },
 };
 
@@ -57,14 +57,14 @@ const JSON_LD = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "paw",
-  alternateName: "Personal Agent Workflows",
+  alternateName: "Personal Agent Workforce",
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux",
   url: "https://getpaw.dev/",
   downloadUrl: "https://github.com/Effulgent-Point/paw",
   softwareHelp: "https://getpaw.dev/tutorial",
   description:
-    "paw is an open-source personal agent workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
+    "paw is an open-source Personal Agent Workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
   license: "https://opensource.org/licenses/MIT",
   isAccessibleForFree: true,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },

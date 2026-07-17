@@ -8,7 +8,7 @@ export function ConsolePaw() {
     const art = [
       "",
       "   /\\_/\\   paw",
-      "  ( o.o )  Personal Agent Workflows",
+      "  ( o.o )  Personal Agent Workforce",
       "   > ^ <   you found the console.",
       "",
       "  Now go build an agent: github.com/Effulgent-Point/paw",

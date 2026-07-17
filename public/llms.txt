@@ -1,6 +1,6 @@
-# paw: Personal Agent Workflows
+# paw: Personal Agent Workforce
 
-> paw is an open-source personal agent workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right. Standards are enforced, not suggested.
+> paw is an open-source Personal Agent Workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right. Standards are enforced, not suggested.
 
 Canonical site: https://getpaw.dev
 Source: https://github.com/Effulgent-Point/paw
@@ -10,6 +10,7 @@ An Effulgent Point project: https://effulgentpoint.com
 - [Home](https://getpaw.dev/): what paw is, the 60-second pitch, and the install one-liner.
 - [Tutorial](https://getpaw.dev/tutorial): nine interactive tracks generated from the paw CLI tutorial, so the web never drifts from the tool.
 - [Catalog](https://getpaw.dev/catalog): every agent, skill, hook, and CLI command in the kit, searchable and filterable.
+- [Library](https://getpaw.dev/library): the wider agent roster paw draws from, recipes to chain them by role, and a prompt to find the ones you are missing.
 - [Install](https://getpaw.dev/install): requirements, clone, run ./paw setup, and the first run.
 
 ## What is inside

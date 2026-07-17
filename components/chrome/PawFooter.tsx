@@ -14,7 +14,7 @@ export function PawFooter() {
             paw
           </Link>
           <p className="f-tag">
-            An open-source personal agent workforce. Standards enforced, not
+            An open-source Personal Agent Workforce. Standards enforced, not
             suggested.
           </p>
         </div>
@@ -44,7 +44,7 @@ export function PawFooter() {
         </div>
       </div>
       <div className="wrap fine">
-        An Effulgent Point project. MIT licensed. paw, Personal Agent Workflows.
+        An Effulgent Point project. MIT licensed. paw, Personal Agent Workforce.
       </div>
     </footer>
   );
