@@ -48,7 +48,7 @@ export default function Home() {
         </h1>
         <hr className="spectral-rule my-8 max-w-[600px]" />
         <p className="max-w-[540px] text-[19px] text-mut">
-          An open-source AI SDLC starter kit: standards that are enforced not
+          An open-source personal agent workforce: standards that are enforced not
           suggested, {CATALOG_COUNTS.agents} specialized agents, {" "}
           {CATALOG_COUNTS.skills} skill bundles, git guardrails, and a CLI.
         </p>

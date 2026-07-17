@@ -380,7 +380,7 @@ export const TRACKS: Track[] = [
         "body": [
           "",
           "Personal Agent Workflows",
-          "an AI SDLC starter kit",
+          "a personal agent workforce",
           "",
           "Your AI agent writes code fast.",
           "paw makes sure it writes code right.",

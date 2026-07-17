@@ -148,7 +148,7 @@ export const SEARCH_INDEX: SearchIndexEntry[] = [
     "pageIndex": 0,
     "section": "Welcome",
     "title": "Welcome to paw",
-    "text": "Personal Agent Workflows an AI SDLC starter kit Your AI agent writes code fast. paw makes sure it writes code right. This track covers what paw is and how it works."
+    "text": "Personal Agent Workflows a personal agent workforce Your AI agent writes code fast. paw makes sure it writes code right. This track covers what paw is and how it works."
   },
   {
     "trackId": "learn",

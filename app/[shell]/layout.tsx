@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s · paw",
   },
   description:
-    "paw is an open-source AI SDLC starter kit: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
+    "paw is an open-source personal agent workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
   applicationName: "paw",
   openGraph: {
     type: "website",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     url: "https://getpaw.dev",
     title: "paw, Personal Agent Workflows",
     description:
-      "An open-source AI SDLC starter kit: standards enforced not suggested, 18 agents, 7 skill bundles, hooks, and a CLI.",
+      "An open-source personal agent workforce: standards enforced not suggested, 18 agents, 7 skill bundles, hooks, and a CLI.",
   },
 };
 
@@ -64,7 +64,7 @@ const JSON_LD = {
   downloadUrl: "https://github.com/Effulgent-Point/paw",
   softwareHelp: "https://getpaw.dev/tutorial",
   description:
-    "paw is an open-source AI SDLC starter kit: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
+    "paw is an open-source personal agent workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right.",
   license: "https://opensource.org/licenses/MIT",
   isAccessibleForFree: true,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },

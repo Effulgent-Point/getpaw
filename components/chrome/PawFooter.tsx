@@ -14,7 +14,7 @@ export function PawFooter() {
             paw
           </Link>
           <p className="f-tag">
-            An open-source AI SDLC starter kit. Standards enforced, not
+            An open-source personal agent workforce. Standards enforced, not
             suggested.
           </p>
         </div>

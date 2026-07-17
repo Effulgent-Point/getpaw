@@ -1,6 +1,6 @@
 # paw: Personal Agent Workflows
 
-> paw is an open-source AI SDLC starter kit: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right. Standards are enforced, not suggested.
+> paw is an open-source personal agent workforce: 18 specialized agents, 7 skill bundles, enforcement hooks, and a CLI that makes your coding agent write code right. Standards are enforced, not suggested.
 
 Canonical site: https://getpaw.dev
 Source: https://github.com/Effulgent-Point/paw
