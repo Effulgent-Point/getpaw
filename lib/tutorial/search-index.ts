@@ -16,6 +16,132 @@ export interface SearchIndexEntry {
 
 export const SEARCH_INDEX: SearchIndexEntry[] = [
   {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 0,
+    "section": "The words",
+    "title": "Getting started with AI terms",
+    "text": "Before you build an agent, it helps to know the words. This track is a plain-language tour of the terms you will hear all week: model, prompt, context, tokens agent, persona, tools, permissions skills, hooks, rules, contexts No jargon left unexplained."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 1,
+    "section": "The words",
+    "title": "Model",
+    "text": "A MODEL is the AI brain: a large language model (LLM) trained to predict text. Examples: claude-sonnet, claude-opus, gpt-5. * Bigger models: smarter, slower, pricier. * Smaller models: faster, cheaper, fine for simple jobs. You pick the model that fits the task."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 2,
+    "section": "The words",
+    "title": "Prompt, context, tokens",
+    "text": "PROMPT what you ask the model to do. CONTEXT everything the model can see right now: your prompt, the files, the conversation. TOKENS the chunks text is counted in, roughly 3/4 of a word each. Context has a token limit. Good AI work is mostly about putting the right things in the context."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 3,
+    "section": "The words",
+    "title": "Agent vs chatbot",
+    "text": "A CHATBOT answers. An AGENT acts. An agent is a model given a job, a set of tools, and room to use them in a loop until the job is done. + It can read files, run commands, edit code, and check its own work. - It is only as safe as the limits you put around it. paw is those limits."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 4,
+    "section": "Anatomy of an agent",
+    "title": "Anatomy of an agent",
+    "text": "Every agent is four choices: a model, a persona, some tools, and its permissions. Get these right and the agent is useful and safe. Get them wrong and it is a loose cannon."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 5,
+    "section": "Anatomy of an agent",
+    "title": "Pinned to a model",
+    "text": "An agent is PINNED to a specific model in its config, so its behavior does not drift when defaults change. model: claude-sonnet A reviewer might pin a strong model for judgment; a quick formatter might pin a small, fast one."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 6,
+    "section": "Anatomy of an agent",
+    "title": "Persona",
+    "text": "The PERSONA is the agent's job, written as a system prompt. 'You are a security reviewer. Find injection, secrets, and auth flaws. Report, do not fix.' A sharp persona is the difference between a vague answer and exactly what you needed."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 7,
+    "section": "Anatomy of an agent",
+    "title": "Tools",
+    "text": "TOOLS are what the agent can actually do. Read look at files Grep search the code Bash run commands Edit change files Give an agent only the tools its job needs. A reviewer gets Read and Grep, not Edit."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 8,
+    "section": "Anatomy of an agent",
+    "title": "Permissions",
+    "text": "PERMISSIONS are the guardrails on those tools. + read-only: look and report, changes nothing. + read + bash: run tests, cannot edit. + full: implement and operate. In paw, 14 of 18 agents are restricted. Trust comes from limits, not hope."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 9,
+    "section": "paw's pieces",
+    "title": "paw's pieces",
+    "text": "paw gives your agent five kinds of building block. Here is each one."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 10,
+    "section": "paw's pieces",
+    "title": "Agents and skills",
+    "text": "AGENTS are the workers. paw ships 18, each with one narrow job: architect, code-reviewer, bug-auditor, and more. SKILLS are reusable domain knowledge an agent loads on demand: security, frontend, git-safety, and others. An agent loads a skill to get expertise without bloating every prompt."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 11,
+    "section": "paw's pieces",
+    "title": "Hooks, rules, contexts",
+    "text": "RULES are the source of truth: short docs like 'never rebase published work'. HOOKS enforce rules mechanically. They fire on real events and block. They do not just suggest. CONTEXTS set the mindset: building vs reviewing vs a security audit. Rules say it. Hooks make it stick."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 12,
+    "section": "How it fits",
+    "title": "How it all fits",
+    "text": "Put together: agents do the work, load skills for expertise, follow rules as the source of truth, which hooks enforce as hard stops, inside a context that sets the mindset. That is a personal agent workforce: fast agents, real guardrails."
+  },
+  {
+    "trackId": "terms",
+    "trackTitle": "AI terminology",
+    "trackIcon": "🧭",
+    "pageIndex": 13,
+    "section": "How it fits",
+    "title": "Where to go next",
+    "text": "You have the vocabulary. Now use it: + Learn paw: what paw is, in depth + Getting started: install and run it + Try this week: build your own agent The words are yours. Go build."
+  },
+  {
     "trackId": "learn",
     "trackTitle": "Learn paw",
     "trackIcon": "📖",

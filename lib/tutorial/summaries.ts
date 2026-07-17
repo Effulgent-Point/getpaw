@@ -15,6 +15,14 @@ export interface TrackSummary {
 
 export const TRACK_SUMMARIES: TrackSummary[] = [
   {
+    "id": "terms",
+    "title": "AI terminology",
+    "desc": "Agents, models, tools, and paw's building blocks",
+    "time": "~4 min",
+    "icon": "🧭",
+    "pageCount": 14
+  },
+  {
     "id": "learn",
     "title": "Learn paw",
     "desc": "What paw is, the 5 components, concepts",

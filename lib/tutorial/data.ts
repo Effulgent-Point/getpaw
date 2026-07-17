@@ -48,6 +48,319 @@ export const PAW_VERSION = "0.4.0";
 /** All tracks, in TRACKS order. */
 export const TRACKS: Track[] = [
   {
+    "id": "terms",
+    "title": "AI terminology",
+    "desc": "Agents, models, tools, and paw's building blocks",
+    "time": "~4 min",
+    "icon": "🧭",
+    "sections": [
+      "The words",
+      "Anatomy of an agent",
+      "paw's pieces",
+      "How it fits"
+    ],
+    "pages": [
+      {
+        "title": "Getting started with AI terms",
+        "section": "The words",
+        "body": [
+          "",
+          "  Before you build an agent, it helps",
+          "  to know the words.",
+          "",
+          "  This track is a plain-language tour of",
+          "  the terms you will hear all week:",
+          "",
+          "    model, prompt, context, tokens",
+          "    agent, persona, tools, permissions",
+          "    skills, hooks, rules, contexts",
+          "",
+          "  No jargon left unexplained."
+        ],
+        "typewriterTitle": true
+      },
+      {
+        "title": "Model",
+        "section": "The words",
+        "body": [
+          "",
+          "  A MODEL is the AI brain: a large",
+          "  language model (LLM) trained to predict",
+          "  text.",
+          "",
+          "  Examples: claude-sonnet, claude-opus,",
+          "  gpt-5.",
+          "",
+          "  * Bigger models: smarter, slower, pricier.",
+          "  * Smaller models: faster, cheaper, fine",
+          "    for simple jobs.",
+          "",
+          "  You pick the model that fits the task."
+        ],
+        "highlight": {
+          "MODEL": 1,
+          "*": 3
+        }
+      },
+      {
+        "title": "Prompt, context, tokens",
+        "section": "The words",
+        "body": [
+          "",
+          "  PROMPT   what you ask the model to do.",
+          "",
+          "  CONTEXT  everything the model can see",
+          "           right now: your prompt, the",
+          "           files, the conversation.",
+          "",
+          "  TOKENS   the chunks text is counted in,",
+          "           roughly 3/4 of a word each.",
+          "           Context has a token limit.",
+          "",
+          "  Good AI work is mostly about putting the",
+          "  right things in the context."
+        ],
+        "highlight": {
+          "PROMPT": 1,
+          "CONTEXT": 1,
+          "TOKENS": 1
+        }
+      },
+      {
+        "title": "Agent vs chatbot",
+        "section": "The words",
+        "body": [
+          "",
+          "  A CHATBOT answers.",
+          "  An AGENT acts.",
+          "",
+          "  An agent is a model given a job, a set",
+          "  of tools, and room to use them in a loop",
+          "  until the job is done.",
+          "",
+          "  + It can read files, run commands, edit",
+          "    code, and check its own work.",
+          "  - It is only as safe as the limits you",
+          "    put around it.",
+          "",
+          "  paw is those limits."
+        ],
+        "highlight": {
+          "+": 2,
+          "-": 3
+        }
+      },
+      {
+        "title": "Anatomy of an agent",
+        "section": "Anatomy of an agent",
+        "body": [
+          "",
+          "  Every agent is four choices:",
+          "",
+          "    a model, a persona, some tools,",
+          "    and its permissions.",
+          "",
+          "  Get these right and the agent is useful",
+          "  and safe. Get them wrong and it is a",
+          "  loose cannon."
+        ],
+        "art": [
+          "  ┌─────────────── AN AGENT ────────────────┐",
+          "  │                                          │",
+          "  │   model:       claude-sonnet (pinned)    │",
+          "  │   persona:     'You are a security       │",
+          "  │                 reviewer...'             │",
+          "  │   tools:       Read, Grep, Glob          │",
+          "  │   permissions: read-only                 │",
+          "  │                                          │",
+          "  └──────────────────────────────────────────┘"
+        ],
+        "artColor": 1
+      },
+      {
+        "title": "Pinned to a model",
+        "section": "Anatomy of an agent",
+        "body": [
+          "",
+          "  An agent is PINNED to a specific model",
+          "  in its config, so its behavior does not",
+          "  drift when defaults change.",
+          "",
+          "    model: claude-sonnet",
+          "",
+          "  A reviewer might pin a strong model for",
+          "  judgment; a quick formatter might pin a",
+          "  small, fast one."
+        ],
+        "highlight": {
+          "PINNED": 1,
+          "model:": 2
+        }
+      },
+      {
+        "title": "Persona",
+        "section": "Anatomy of an agent",
+        "body": [
+          "",
+          "  The PERSONA is the agent's job, written",
+          "  as a system prompt.",
+          "",
+          "    'You are a security reviewer. Find",
+          "     injection, secrets, and auth flaws.",
+          "     Report, do not fix.'",
+          "",
+          "  A sharp persona is the difference between",
+          "  a vague answer and exactly what you",
+          "  needed."
+        ],
+        "highlight": {
+          "PERSONA": 1
+        }
+      },
+      {
+        "title": "Tools",
+        "section": "Anatomy of an agent",
+        "body": [
+          "",
+          "  TOOLS are what the agent can actually do.",
+          "",
+          "    Read    look at files",
+          "    Grep    search the code",
+          "    Bash    run commands",
+          "    Edit    change files",
+          "",
+          "  Give an agent only the tools its job",
+          "  needs. A reviewer gets Read and Grep,",
+          "  not Edit."
+        ],
+        "highlight": {
+          "TOOLS": 1
+        }
+      },
+      {
+        "title": "Permissions",
+        "section": "Anatomy of an agent",
+        "body": [
+          "",
+          "  PERMISSIONS are the guardrails on those",
+          "  tools.",
+          "",
+          "  + read-only: look and report, changes",
+          "    nothing.",
+          "  + read + bash: run tests, cannot edit.",
+          "  + full: implement and operate.",
+          "",
+          "  In paw, 14 of 18 agents are restricted.",
+          "  Trust comes from limits, not hope."
+        ],
+        "highlight": {
+          "PERMISSIONS": 1,
+          "+": 2
+        }
+      },
+      {
+        "title": "paw's pieces",
+        "section": "paw's pieces",
+        "body": [
+          "",
+          "  paw gives your agent five kinds of",
+          "  building block. Here is each one."
+        ],
+        "art": [
+          "  ┌──────────┐  loads  ┌──────────┐",
+          "  │  AGENTS  │ ──────> │  SKILLS  │",
+          "  │ 18 roles │         │  domain  │",
+          "  └────┬─────┘         └──────────┘",
+          "       │ follow                     ",
+          "       v                            ",
+          "  ┌──────────┐  fire   ┌──────────┐",
+          "  │  RULES   │ ──────> │  HOOKS   │",
+          "  │  6 pages │         │  enforce │",
+          "  └──────────┘         └──────────┘"
+        ],
+        "artColor": 1
+      },
+      {
+        "title": "Agents and skills",
+        "section": "paw's pieces",
+        "body": [
+          "",
+          "  AGENTS are the workers. paw ships 18,",
+          "  each with one narrow job: architect,",
+          "  code-reviewer, bug-auditor, and more.",
+          "",
+          "  SKILLS are reusable domain knowledge an",
+          "  agent loads on demand: security,",
+          "  frontend, git-safety, and others.",
+          "",
+          "  An agent loads a skill to get expertise",
+          "  without bloating every prompt."
+        ],
+        "highlight": {
+          "AGENTS": 1,
+          "SKILLS": 1
+        }
+      },
+      {
+        "title": "Hooks, rules, contexts",
+        "section": "paw's pieces",
+        "body": [
+          "",
+          "  RULES are the source of truth: short",
+          "  docs like 'never rebase published work'.",
+          "",
+          "  HOOKS enforce rules mechanically. They",
+          "  fire on real events and block. They do",
+          "  not just suggest.",
+          "",
+          "  CONTEXTS set the mindset: building vs",
+          "  reviewing vs a security audit.",
+          "",
+          "  Rules say it. Hooks make it stick."
+        ],
+        "highlight": {
+          "RULES": 1,
+          "HOOKS": 1,
+          "CONTEXTS": 1
+        }
+      },
+      {
+        "title": "How it all fits",
+        "section": "How it fits",
+        "body": [
+          "",
+          "  Put together:",
+          "",
+          "    agents do the work,",
+          "    load skills for expertise,",
+          "    follow rules as the source of truth,",
+          "    which hooks enforce as hard stops,",
+          "    inside a context that sets the mindset.",
+          "",
+          "  That is a personal agent workforce:",
+          "  fast agents, real guardrails."
+        ]
+      },
+      {
+        "title": "Where to go next",
+        "section": "How it fits",
+        "body": [
+          "",
+          "  You have the vocabulary. Now use it:",
+          "",
+          "  + Learn paw:         what paw is, in depth",
+          "  + Getting started:   install and run it",
+          "  + Try this week:     build your own agent",
+          "",
+          "  The words are yours. Go build."
+        ],
+        "highlight": {
+          "+": 2
+        }
+      }
+    ]
+  },
+  {
     "id": "learn",
     "title": "Learn paw",
     "desc": "What paw is, the 5 components, concepts",
