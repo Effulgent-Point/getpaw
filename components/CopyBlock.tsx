@@ -4,8 +4,9 @@ import { useState } from "react";
 
 // Copyable command block styled in the light-only Optical Bench palette (the
 // tutorial's CopyButton is scoped to the tutorial's own --tut-* tokens, so it
-// cannot be reused on the sibling pages).
-export function CopyBlock({ code }: { code: string }) {
+// cannot be reused on the sibling pages). Pass `prose` for multi-line prose
+// (e.g. a paste-able prompt) so long lines wrap instead of scrolling sideways.
+export function CopyBlock({ code, prose = false }: { code: string; prose?: boolean }) {
   const [copied, setCopied] = useState(false);
 
   async function copy() {
@@ -42,9 +43,15 @@ export function CopyBlock({ code }: { code: string }) {
       >
         {copied ? "Copied" : "Copy"}
       </button>
-      <pre className="overflow-x-auto p-4 pr-20 font-mono text-[13px] leading-relaxed text-ink">
-        <code>{code}</code>
-      </pre>
+      {prose ? (
+        <p className="whitespace-pre-wrap break-words p-4 pr-20 text-[14.5px] leading-relaxed text-ink">
+          {code}
+        </p>
+      ) : (
+        <pre className="overflow-x-auto p-4 pr-20 font-mono text-[13px] leading-relaxed text-ink">
+          <code>{code}</code>
+        </pre>
+      )}
     </div>
   );
 }

@@ -1,0 +1,4 @@
+# Every change that reaches main through a pull request needs Jason's review.
+# Repo admins pushing directly (the CLI deploy flow) bypass this by design;
+# community and outside PRs do not, and require an approving review from below.
+* @zofrus
