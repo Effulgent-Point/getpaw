@@ -48,8 +48,8 @@ export default function Home() {
         </h1>
         <hr className="spectral-rule my-8 max-w-[600px]" />
         <p className="max-w-[540px] text-[19px] text-mut">
-          An open-source Personal Agent Workforce: standards that are enforced not
-          suggested, {CATALOG_COUNTS.agents} specialized agents, {" "}
+          An open-source Personal Agent Workforce: standards that are enforced,
+          not suggested, {CATALOG_COUNTS.agents} specialized agents,{" "}
           {CATALOG_COUNTS.skills} skill bundles, git guardrails, and a CLI.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
