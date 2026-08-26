@@ -21,7 +21,7 @@ const principles = [
   },
   {
     principle: "Empowerment, not replacement",
-    paw: "Your agent writes code fast; paw keeps you the conductor. 14 of 18 agents run with restricted permissions. Most only look and report, you decide.",
+    paw: "Your agent writes code fast; paw keeps you the conductor. Most of the 54 agents run with restricted permissions. They look and report, you decide.",
   },
   {
     principle: "Built on a foundation of trust",
@@ -30,7 +30,10 @@ const principles = [
 ];
 
 const steps = [
-  { label: "Clone paw", cmd: "git clone https://github.com/Effulgent-Point/paw.git ~/paw" },
+  {
+    label: "Clone paw",
+    cmd: "git clone https://github.com/Effulgent-Point/paw.git ~/paw",
+  },
   { label: "Run setup", cmd: "cd ~/paw && ./paw setup" },
   { label: "Learn it in your browser", cmd: "./paw tutorial --web" },
   { label: "Build your first agent", cmd: "./paw tutorial try" },
@@ -53,13 +56,13 @@ const slides: Slide[] = [
     title: "Empowerment, not replacement",
     bullets: [
       "Clear benefits: standards are enforced, not suggested",
-      "Empowerment: 14 of 18 agents run with restricted permissions",
+      "Empowerment: most of the 54 agents run with restricted permissions",
       "Trust: hooks block the dangerous git moves, mechanically",
     ],
   },
   {
     kicker: "What is in the box",
-    title: "18 agents. 7 skills. Hard-stop hooks. A CLI.",
+    title: "54 agents. 22 rules. 8 skills. Hard-stop hooks. A CLI.",
     bullets: [
       "Specialized reviewers, each checking one dimension",
       "Domain skill bundles agents load for expertise",
@@ -85,7 +88,10 @@ export default function BambooHrPage() {
     <div className="bamboo-root">
       <div className="wrap" style={{ paddingTop: 40, paddingBottom: 72 }}>
         {/* Hero */}
-        <section className="bamboo-hero" style={{ padding: "clamp(28px, 5vw, 60px)" }}>
+        <section
+          className="bamboo-hero"
+          style={{ padding: "clamp(28px, 5vw, 60px)" }}
+        >
           <span className="bamboo-chip">🐼 BambooHR × paw</span>
           <h1
             style={{
@@ -101,13 +107,24 @@ export default function BambooHrPage() {
           </h1>
           <p
             className="bamboo-mut"
-            style={{ fontSize: "clamp(17px, 2.4vw, 22px)", maxWidth: "48ch", marginTop: 16 }}
+            style={{
+              fontSize: "clamp(17px, 2.4vw, 22px)",
+              maxWidth: "48ch",
+              marginTop: 16,
+            }}
           >
-            You use AI every day with Ask BambooHR. In this Tech Forge session, you
-            build your own. paw is the starter kit that makes your coding agent
-            write code right.
+            You use AI every day with Ask BambooHR. In this Tech Forge session,
+            you build your own. paw is the starter kit that makes your coding
+            agent write code right.
           </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 28 }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 12,
+              marginTop: 28,
+            }}
+          >
             <a href="#quickstart" className="bamboo-btn">
               Start the quickstart
             </a>
@@ -123,12 +140,18 @@ export default function BambooHrPage() {
             <span className="tick" />
             Your AI principles, in code
           </p>
-          <h2 style={{ fontSize: "clamp(24px, 3.4vw, 36px)", margin: "10px 0 6px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(24px, 3.4vw, 36px)",
+              margin: "10px 0 6px",
+            }}
+          >
             paw is your AI principles, made mechanical
           </h2>
           <p style={{ color: "var(--bamboo-mut)", maxWidth: "60ch" }}>
-            BambooHR builds AI on three principles. paw is what they look like once
-            they are enforced in your codebase instead of written on a wall.
+            BambooHR builds AI on three principles. paw is what they look like
+            once they are enforced in your codebase instead of written on a
+            wall.
           </p>
           <div
             style={{
@@ -141,8 +164,16 @@ export default function BambooHrPage() {
             {principles.map((p, idx) => (
               <div key={p.principle} className="bamboo-card">
                 <p className="p-num">{String(idx + 1).padStart(2, "0")}</p>
-                <h3 style={{ fontSize: 18, margin: "10px 0 8px" }}>{p.principle}</h3>
-                <p style={{ fontSize: 14.5, color: "var(--bamboo-mut)", lineHeight: 1.6 }}>
+                <h3 style={{ fontSize: 18, margin: "10px 0 8px" }}>
+                  {p.principle}
+                </h3>
+                <p
+                  style={{
+                    fontSize: 14.5,
+                    color: "var(--bamboo-mut)",
+                    lineHeight: 1.6,
+                  }}
+                >
                   {p.paw}
                 </p>
               </div>
@@ -156,12 +187,17 @@ export default function BambooHrPage() {
             <span className="tick" />
             Branded quickstart
           </p>
-          <h2 style={{ fontSize: "clamp(24px, 3.4vw, 36px)", margin: "10px 0 6px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(24px, 3.4vw, 36px)",
+              margin: "10px 0 6px",
+            }}
+          >
             Four commands, then build your first agent
           </h2>
           <p style={{ color: "var(--bamboo-mut)", maxWidth: "58ch" }}>
-            Every command copies to your clipboard. Follow along live, or run it on
-            your own after the session.
+            Every command copies to your clipboard. Follow along live, or run it
+            on your own after the session.
           </p>
           <div style={{ display: "grid", gap: 18, marginTop: 24 }}>
             {steps.map((s, idx) => (
@@ -176,7 +212,14 @@ export default function BambooHrPage() {
               </div>
             ))}
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 24 }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 12,
+              marginTop: 24,
+            }}
+          >
             <Link href="/tutorial" className="bamboo-btn">
               Open the full tutorial
             </Link>
@@ -185,7 +228,10 @@ export default function BambooHrPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="bamboo-btn line"
-              style={{ color: "var(--bamboo-deep)", borderColor: "var(--bamboo-line)" }}
+              style={{
+                color: "var(--bamboo-deep)",
+                borderColor: "var(--bamboo-line)",
+              }}
             >
               paw on GitHub ↗
             </a>
@@ -198,13 +244,20 @@ export default function BambooHrPage() {
             <span className="tick" />
             The deck
           </p>
-          <h2 style={{ fontSize: "clamp(24px, 3.4vw, 36px)", margin: "10px 0 14px" }}>
+          <h2
+            style={{
+              fontSize: "clamp(24px, 3.4vw, 36px)",
+              margin: "10px 0 14px",
+            }}
+          >
             Present it right here
           </h2>
           <SlideViewer slides={slides} />
-          <p style={{ fontSize: 13, color: "var(--bamboo-mut)", marginTop: 12 }}>
-            Placeholder deck. Arrows or space to move, F for fullscreen present mode.
-            Swap in the real slides anytime.
+          <p
+            style={{ fontSize: 13, color: "var(--bamboo-mut)", marginTop: 12 }}
+          >
+            Placeholder deck. Arrows or space to move, F for fullscreen present
+            mode. Swap in the real slides anytime.
           </p>
         </section>
       </div>

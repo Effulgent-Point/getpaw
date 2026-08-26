@@ -16,7 +16,7 @@ cd ~/paw
 
 const FIRST_RUN = `paw tutorial --web     # open the browser tutorial
 paw check              # run the standard quality gate
-paw agents             # list all 18 agents
+paw agents             # list all 54 agents
 paw doctor             # diagnose an install`;
 
 const REQUIREMENTS = [
@@ -66,8 +66,7 @@ export default function InstallPage() {
         <ol className="grid gap-10">
           <li>
             <h2 className="label">
-              <span className="tick" />
-              1 &middot; Clone and set up
+              <span className="tick" />1 &middot; Clone and set up
             </h2>
             <div className="mt-4 max-w-[640px]">
               <CopyBlock code={CLONE} />
@@ -79,8 +78,7 @@ export default function InstallPage() {
           </li>
           <li>
             <h2 className="label">
-              <span className="tick" />
-              2 &middot; First run
+              <span className="tick" />2 &middot; First run
             </h2>
             <div className="mt-4 max-w-[640px]">
               <CopyBlock code={FIRST_RUN} />

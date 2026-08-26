@@ -5,7 +5,7 @@ import { CatalogView } from "@/components/catalog/CatalogView";
 export const metadata: Metadata = {
   title: "Catalog",
   description:
-    "Browse the paw kit: 18 specialized agents, 7 skill bundles, enforcement hooks, and the CLI. Search everything, or filter agents by phase and permission tier.",
+    "Browse the paw kit: 54 specialized agents, 22 doctrine rules, 8 skill bundles, 9 hooks, and a 15-command CLI. Search everything, or filter agents by phase and permission tier.",
   alternates: { canonical: "/catalog" },
 };
 
