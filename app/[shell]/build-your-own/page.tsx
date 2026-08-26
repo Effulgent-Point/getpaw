@@ -85,7 +85,7 @@ silent-failure, edge-case, test-quality, naming, missing-observability.`;
 const DEPLOY_TARGETS = [
   {
     label: "Personal laptop or Mac mini fleet",
-    body: "Simplest case. Your harness runs where you code. Add a Tailscale mesh if you want to dispatch heavy runs to a spare machine. paw and forge both support this out of the box.",
+    body: "Simplest case. Your harness runs where you code. Add a Tailscale mesh if you want to dispatch heavy runs to a spare machine. paw supports this out of the box; any harness that shells out to a local model or CLI can do the same.",
   },
   {
     label: "Enterprise day-job",

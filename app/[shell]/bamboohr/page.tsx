@@ -21,7 +21,7 @@ const principles = [
   },
   {
     principle: "Empowerment, not replacement",
-    paw: "Your agent writes code fast; paw keeps you the conductor. Most of the 54 agents run with restricted permissions. They look and report, you decide.",
+    paw: "Your agent writes code fast; paw keeps you the conductor. Most of the 18 agents run with restricted permissions. They look and report, you decide.",
   },
   {
     principle: "Built on a foundation of trust",
@@ -56,13 +56,13 @@ const slides: Slide[] = [
     title: "Empowerment, not replacement",
     bullets: [
       "Clear benefits: standards are enforced, not suggested",
-      "Empowerment: most of the 54 agents run with restricted permissions",
+      "Empowerment: most of the 18 agents run with restricted permissions",
       "Trust: hooks block the dangerous git moves, mechanically",
     ],
   },
   {
     kicker: "What is in the box",
-    title: "54 agents. 22 rules. 8 skills. Hard-stop hooks. A CLI.",
+    title: "18 agents. 6 rules. 7 skills. Hard-stop hooks. A CLI.",
     bullets: [
       "Specialized reviewers, each checking one dimension",
       "Domain skill bundles agents load for expertise",

@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: "%s · paw",
   },
   description:
-    "paw is an open-source Personal Agent Workforce: 54 specialized agents, 22 doctrine rules, 8 skill bundles, 9 enforcement hooks, and a 15-command CLI that makes your coding agent write code right.",
+    "paw is an open-source Personal Agent Workforce: 18 specialized agents, 6 doctrine rules, 7 skill bundles, 4 enforcement hooks, and a 15-command CLI that makes your coding agent write code right.",
   applicationName: "paw",
   openGraph: {
     type: "website",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     url: "https://getpaw.dev",
     title: "paw, Personal Agent Workforce",
     description:
-      "An open-source Personal Agent Workforce: standards enforced, not suggested, 54 agents, 22 rules, 8 skills, 9 hooks, and a CLI.",
+      "An open-source Personal Agent Workforce: standards enforced, not suggested, 18 agents, 6 rules, 7 skills, 4 hooks, and a CLI.",
   },
 };
 
@@ -64,7 +64,7 @@ const JSON_LD = {
   downloadUrl: "https://github.com/Effulgent-Point/paw",
   softwareHelp: "https://getpaw.dev/tutorial",
   description:
-    "paw is an open-source Personal Agent Workforce: 54 specialized agents, 22 doctrine rules, 8 skill bundles, 9 enforcement hooks, and a 15-command CLI that makes your coding agent write code right.",
+    "paw is an open-source Personal Agent Workforce: 18 specialized agents, 6 doctrine rules, 7 skill bundles, 4 enforcement hooks, and a 15-command CLI that makes your coding agent write code right.",
   license: "https://opensource.org/licenses/MIT",
   isAccessibleForFree: true,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
