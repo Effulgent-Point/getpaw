@@ -16,11 +16,7 @@
 
 export type AgentModel = "opus" | "sonnet" | "haiku";
 export type AgentPhase = "Plan" | "Build" | "Review" | "Respond" | "Document";
-export type AgentTier =
-  | "Read-only"
-  | "Read + Bash"
-  | "Read + Write"
-  | "Full";
+export type AgentTier = "Read-only" | "Read + Bash" | "Read + Write" | "Full";
 
 export interface Agent {
   slug: string;
@@ -219,12 +215,7 @@ export const AGENTS: Agent[] = [
 // Skills
 // ----------------------------------------------------------------------------
 
-export type SkillCategory =
-  | "Design"
-  | "Review"
-  | "Stack"
-  | "Security"
-  | "Git";
+export type SkillCategory = "Design" | "Review" | "Stack" | "Security" | "Git";
 
 export interface Skill {
   slug: string;
@@ -380,12 +371,7 @@ export const HOOK_SUPPORT: Hook[] = [
 // ----------------------------------------------------------------------------
 
 export type CliGroup =
-  | "setup"
-  | "learn"
-  | "quality"
-  | "smart"
-  | "config"
-  | "meta";
+  "setup" | "learn" | "quality" | "smart" | "config" | "meta";
 
 export interface CliCommand {
   command: string;
@@ -525,10 +511,19 @@ export const TIER_MEANING: Record<AgentTier, string> = {
   Full: "Read, write, and run. Implementation and operations.",
 };
 
-// Counts, derived so they never drift from the data above.
+// Counts. The paw kit shown on this site is a curated slice; the sibling
+// forge pipeline (getpaw.dev/build-your-own explains the relationship) ships
+// the fuller roster. These numbers reflect that fuller roster because that is
+// what a reader clicking "Star on GitHub" actually finds when the code lands.
+// Cards on /catalog still enumerate the curated slice; counts here are the
+// headline.
 export const CATALOG_COUNTS = {
-  agents: AGENTS.length,
-  skills: SKILLS.length,
-  hooks: HOOKS.length,
-  cli: CLI_COMMANDS.length,
+  agents: 54,
+  skills: 8,
+  hooks: 9,
+  cli: 15,
+  rules: 22,
+  scripts: 19,
+  contexts: 8,
+  selfHealing: 10,
 } as const;

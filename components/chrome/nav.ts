@@ -5,6 +5,7 @@ export const PAW_NAV = [
   { href: "/tutorial", label: "Tutorial" },
   { href: "/catalog", label: "Catalog" },
   { href: "/library", label: "Library" },
+  { href: "/build-your-own", label: "Build your own" },
   { href: "/install", label: "Install" },
 ] as const;
 

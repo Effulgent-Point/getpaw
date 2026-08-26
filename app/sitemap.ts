@@ -6,7 +6,14 @@ const BASE = "https://getpaw.dev";
 // Every URL is a getpaw.dev URL, matching the rel=canonical on each page.
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const pages = ["", "/tutorial", "/catalog", "/install"].map((path) => ({
+  const pages = [
+    "",
+    "/tutorial",
+    "/catalog",
+    "/library",
+    "/build-your-own",
+    "/install",
+  ].map((path) => ({
     url: `${BASE}${path}`,
     lastModified: now,
   }));

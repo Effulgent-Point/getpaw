@@ -34,10 +34,10 @@ export default function LibraryPage() {
           Steal these agents.
         </h1>
         <p className="mt-4 max-w-[620px] text-[17px] text-mut">
-          paw ships a core {CATALOG_COUNTS.agents} agents. This is the wider
-          roster they come from: {AGENT_IDEAS.length} in all, the rest worth
-          building yourself. Recipes to chain them, and a prompt to find the ones
-          only you need. A menu, not a spec.
+          paw ships {CATALOG_COUNTS.agents} agents today. This is the wider
+          roster they come from: {AGENT_IDEAS.length} in all, the ones not yet
+          in the kit worth building yourself. Recipes to chain them, and a
+          prompt to find the ones only you need. A menu, not a spec.
         </p>
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 border-y border-line py-4 font-mono text-[12px] text-mut">
           <span>{AGENT_IDEAS.length} AGENTS</span>
@@ -103,8 +103,8 @@ export default function LibraryPage() {
           Recipes by role
         </h2>
         <p className="mt-4 max-w-[620px] text-[15px] text-mut">
-          Chaining beats any single agent. A few starting points, one per hat you
-          might wear. Read the arrows as "then".
+          Chaining beats any single agent. A few starting points, one per hat
+          you might wear. Read the arrows as "then".
         </p>
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           {ROLE_RECIPES.map((r) => (
@@ -137,7 +137,9 @@ export default function LibraryPage() {
                   </span>
                 ))}
               </div>
-              <p className="mt-4 text-[14px] leading-relaxed text-mut">{r.how}</p>
+              <p className="mt-4 text-[14px] leading-relaxed text-mut">
+                {r.how}
+              </p>
             </div>
           ))}
         </div>

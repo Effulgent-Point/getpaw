@@ -33,6 +33,42 @@ const PILLARS = [
   },
 ];
 
+// Recent, concrete shipments. Kept short and specific; long enough to answer
+// "what has actually changed since I last looked" without turning the home
+// page into a changelog.
+const RECENT = [
+  {
+    tag: "Correctness",
+    title: "Structured rework schema",
+    body: "Gate findings now carry stable ids, required_change, and acceptance_check. Rework happens by finding-id; gap-cycle detection stops the same finding from ping-ponging under a rephrase.",
+  },
+  {
+    tag: "Ergonomics",
+    title: "paw init, paw sync, paw cost",
+    body: "Onboarding is one command that detects your stack and opts into the right gates. paw sync bundles pull + hook sync + rule regen + config validate. paw cost is the per-run token and agent view.",
+  },
+  {
+    tag: "Compatibility",
+    title: "Full Cursor parity",
+    body: "generate-cursor-rules renders every rule, agent, context, and command as an .mdc file. Cursor users see the same 22 rules and 54 agents Claude Code users do; drift detection catches divergence.",
+  },
+  {
+    tag: "Enterprise",
+    title: "Temporal + CI templates + fork overlays",
+    body: "temporal-architect agent (dual-mode Phase 1 + Phase 8), an enterprise-deployment context, an overlay convention for team forks, and starter CI workflows for GitHub Actions, Azure DevOps, GitLab CI, and Jenkins.",
+  },
+  {
+    tag: "Ship discipline",
+    title: "Post-ship closure loop teeth",
+    body: "Critical Phase-12 findings now auto-spawn a bounded (one-iteration) fix workstream that runs against the schema fields above. No retry loops, no wishful policy, just a mechanical follow-through.",
+  },
+  {
+    tag: "Evidence",
+    title: "QA fan-out found six real bugs in paw itself",
+    body: "The parallel review pipeline ran against paw's own last eight PRs and turned up three critical bugs plus ten warnings that had shipped past TDD and per-PR review. All fixed in one bundle.",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -100,11 +136,13 @@ export default function Home() {
             hosted tutorial
           </Link>
           , or run it locally after install with{" "}
-          <code className="font-mono text-ink">paw tutorial --web</code>.
+          <code className="font-mono text-ink">paw tutorial --web</code>. Then
+          run <code className="font-mono text-ink">paw init</code> inside a
+          project to opt into the gates that make sense for the stack.
         </p>
       </section>
 
-      <section className="wrap pb-24">
+      <section className="wrap pb-16">
         <h2 className="label">
           <span className="tick" />
           What is in the kit
@@ -125,6 +163,62 @@ export default function Home() {
               <p className="mt-3 text-[14.5px] text-mut">{p.body}</p>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="wrap pb-16">
+        <h2 className="label">
+          <span className="tick" />
+          Shipped recently
+        </h2>
+        <p className="mt-4 max-w-[620px] text-[15.5px] text-mut">
+          paw is a moving target on purpose. Here is what landed on main in the
+          last few arcs, and why each one earned its keep.
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {RECENT.map((r) => (
+            <div
+              key={r.title}
+              className="rounded-lg border border-line bg-card p-5"
+            >
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-mut">
+                {r.tag}
+              </div>
+              <div className="mt-2 font-display text-[18px] font-bold leading-tight">
+                {r.title}
+              </div>
+              <p className="mt-2 text-[14.5px] leading-relaxed text-mut">
+                {r.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="wrap pb-24">
+        <div className="rounded-lg border border-line bg-card p-8">
+          <span className="eyebrow">
+            <span className="tick" />
+            New
+          </span>
+          <h2 className="mt-3 max-w-[640px] font-display text-[clamp(24px,3.4vw,34px)] font-extrabold leading-[1.05] tracking-[-0.01em]">
+            Build your own agentic harness.
+          </h2>
+          <p className="mt-3 max-w-[600px] text-[15.5px] leading-relaxed text-mut">
+            paw is one implementation of a pattern, not the pattern itself. If
+            you want to encode your own doctrine, your own hooks, and your own
+            agents around your day-to-day, we wrote the playbook we wish we had.
+            Deployment targets, corpus mining, when to encode a rule vs spawn an
+            agent, all of it.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link className="btn" href="/build-your-own">
+              Read the playbook
+            </Link>
+            <Link className="btn line" href="/library">
+              Steal from the roster
+            </Link>
+          </div>
         </div>
       </section>
     </>
