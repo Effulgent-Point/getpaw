@@ -511,19 +511,13 @@ export const TIER_MEANING: Record<AgentTier, string> = {
   Full: "Read, write, and run. Implementation and operations.",
 };
 
-// Counts. The paw kit shown on this site is a curated slice; the sibling
-// forge pipeline (getpaw.dev/build-your-own explains the relationship) ships
-// the fuller roster. These numbers reflect that fuller roster because that is
-// what a reader clicking "Star on GitHub" actually finds when the code lands.
-// Cards on /catalog still enumerate the curated slice; counts here are the
-// headline.
+// Counts. Every number below reflects what actually ships in the paw kit and
+// what /catalog renders as cards. If a card is added or removed, update the
+// count so the headline never contradicts the browse view.
 export const CATALOG_COUNTS = {
-  agents: 54,
-  skills: 8,
-  hooks: 9,
+  agents: AGENTS.length,
+  skills: SKILLS.length,
+  hooks: HOOKS.length,
   cli: 15,
-  rules: 22,
-  scripts: 19,
-  contexts: 8,
-  selfHealing: 10,
+  rules: 6,
 } as const;

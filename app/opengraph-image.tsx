@@ -76,8 +76,8 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", gap: 28 }}>
-          <span>54 agents</span>
-          <span>22 rules</span>
+          <span>18 agents</span>
+          <span>6 rules</span>
           <span>hard-stop hooks</span>
           <span>a CLI</span>
         </div>

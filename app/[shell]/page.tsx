@@ -38,34 +38,24 @@ const PILLARS = [
 // page into a changelog.
 const RECENT = [
   {
-    tag: "Correctness",
-    title: "Structured rework schema",
-    body: "Gate findings now carry stable ids, required_change, and acceptance_check. Rework happens by finding-id; gap-cycle detection stops the same finding from ping-ponging under a rephrase.",
+    tag: "Playbook",
+    title: "Build your own agentic harness",
+    body: "A new practical walkthrough for encoding your own doctrine, deployment targets, and persona agent. It is the page we wish someone had handed us before we started. Read it in order once, come back to the sections that match where you are stuck.",
   },
   {
-    tag: "Ergonomics",
-    title: "paw init, paw sync, paw cost",
-    body: "Onboarding is one command that detects your stack and opts into the right gates. paw sync bundles pull + hook sync + rule regen + config validate. paw cost is the per-run token and agent view.",
+    tag: "Kit",
+    title: "18 agents, 4 hooks, 7 skill bundles",
+    body: "The catalog page enumerates the current kit end to end. Each agent card carries its phase and permission tier so you can see, at a glance, which ones can only look and which ones can write.",
   },
   {
-    tag: "Compatibility",
-    title: "Full Cursor parity",
-    body: "generate-cursor-rules renders every rule, agent, context, and command as an .mdc file. Cursor users see the same 22 rules and 54 agents Claude Code users do; drift detection catches divergence.",
+    tag: "Learn",
+    title: "Nine-track hosted tutorial",
+    body: "The browser walkthrough matches the CLI walkthrough one to one. Learn paw, agents, hooks, rules, the CLI, workflows, terminology, contributing, and the practice buggy app. Generated from a single source so the two never drift.",
   },
   {
-    tag: "Enterprise",
-    title: "Temporal + CI templates + fork overlays",
-    body: "temporal-architect agent (dual-mode Phase 1 + Phase 8), an enterprise-deployment context, an overlay convention for team forks, and starter CI workflows for GitHub Actions, Azure DevOps, GitLab CI, and Jenkins.",
-  },
-  {
-    tag: "Ship discipline",
-    title: "Post-ship closure loop teeth",
-    body: "Critical Phase-12 findings now auto-spawn a bounded (one-iteration) fix workstream that runs against the schema fields above. No retry loops, no wishful policy, just a mechanical follow-through.",
-  },
-  {
-    tag: "Evidence",
-    title: "QA fan-out found six real bugs in paw itself",
-    body: "The parallel review pipeline ran against paw's own last eight PRs and turned up three critical bugs plus ten warnings that had shipped past TDD and per-PR review. All fixed in one bundle.",
+    tag: "Discovery",
+    title: "Idea library and the wider roster",
+    body: "The /library page lays out the wider agent roster paw draws from, with in-paw tags on the ones that ship in the box and recipes to chain them. A menu to steal from, not a spec.",
   },
 ];
 

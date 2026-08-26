@@ -16,7 +16,7 @@ cd ~/paw
 
 const FIRST_RUN = `paw tutorial --web     # open the browser tutorial
 paw check              # run the standard quality gate
-paw agents             # list all 54 agents
+paw agents             # list all 18 agents
 paw doctor             # diagnose an install`;
 
 const REQUIREMENTS = [

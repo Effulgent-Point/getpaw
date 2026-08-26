@@ -48,22 +48,22 @@ export const PAW_VERSION = "0.4.0";
 /** All tracks, in TRACKS order. */
 export const TRACKS: Track[] = [
   {
-    "id": "terms",
-    "title": "AI terminology",
-    "desc": "Agents, models, tools, and paw's building blocks",
-    "time": "~4 min",
-    "icon": "🧭",
-    "sections": [
+    id: "terms",
+    title: "AI terminology",
+    desc: "Agents, models, tools, and paw's building blocks",
+    time: "~4 min",
+    icon: "🧭",
+    sections: [
       "The words",
       "Anatomy of an agent",
       "paw's pieces",
-      "How it fits"
+      "How it fits",
     ],
-    "pages": [
+    pages: [
       {
-        "title": "Getting started with AI terms",
-        "section": "The words",
-        "body": [
+        title: "Getting started with AI terms",
+        section: "The words",
+        body: [
           "",
           "  Before you build an agent, it helps",
           "  to know the words.",
@@ -75,14 +75,14 @@ export const TRACKS: Track[] = [
           "    agent, persona, tools, permissions",
           "    skills, hooks, rules, contexts",
           "",
-          "  No jargon left unexplained."
+          "  No jargon left unexplained.",
         ],
-        "typewriterTitle": true
+        typewriterTitle: true,
       },
       {
-        "title": "Model",
-        "section": "The words",
-        "body": [
+        title: "Model",
+        section: "The words",
+        body: [
           "",
           "  A MODEL is the AI brain: a large",
           "  language model (LLM) trained to predict",
@@ -95,17 +95,17 @@ export const TRACKS: Track[] = [
           "  * Smaller models: faster, cheaper, fine",
           "    for simple jobs.",
           "",
-          "  You pick the model that fits the task."
+          "  You pick the model that fits the task.",
         ],
-        "highlight": {
-          "MODEL": 1,
-          "*": 3
-        }
+        highlight: {
+          MODEL: 1,
+          "*": 3,
+        },
       },
       {
-        "title": "Prompt, context, tokens",
-        "section": "The words",
-        "body": [
+        title: "Prompt, context, tokens",
+        section: "The words",
+        body: [
           "",
           "  PROMPT   what you ask the model to do.",
           "",
@@ -118,18 +118,18 @@ export const TRACKS: Track[] = [
           "           Context has a token limit.",
           "",
           "  Good AI work is mostly about putting the",
-          "  right things in the context."
+          "  right things in the context.",
         ],
-        "highlight": {
-          "PROMPT": 1,
-          "CONTEXT": 1,
-          "TOKENS": 1
-        }
+        highlight: {
+          PROMPT: 1,
+          CONTEXT: 1,
+          TOKENS: 1,
+        },
       },
       {
-        "title": "Agent vs chatbot",
-        "section": "The words",
-        "body": [
+        title: "Agent vs chatbot",
+        section: "The words",
+        body: [
           "",
           "  A CHATBOT answers.",
           "  An AGENT acts.",
@@ -143,17 +143,17 @@ export const TRACKS: Track[] = [
           "  - It is only as safe as the limits you",
           "    put around it.",
           "",
-          "  paw is those limits."
+          "  paw is those limits.",
         ],
-        "highlight": {
+        highlight: {
           "+": 2,
-          "-": 3
-        }
+          "-": 3,
+        },
       },
       {
-        "title": "Anatomy of an agent",
-        "section": "Anatomy of an agent",
-        "body": [
+        title: "Anatomy of an agent",
+        section: "Anatomy of an agent",
+        body: [
           "",
           "  Every agent is four choices:",
           "",
@@ -162,9 +162,9 @@ export const TRACKS: Track[] = [
           "",
           "  Get these right and the agent is useful",
           "  and safe. Get them wrong and it is a",
-          "  loose cannon."
+          "  loose cannon.",
         ],
-        "art": [
+        art: [
           "  ┌─────────────── AN AGENT ────────────────┐",
           "  │                                          │",
           "  │   model:       claude-sonnet (pinned)    │",
@@ -173,14 +173,14 @@ export const TRACKS: Track[] = [
           "  │   tools:       Read, Grep, Glob          │",
           "  │   permissions: read-only                 │",
           "  │                                          │",
-          "  └──────────────────────────────────────────┘"
+          "  └──────────────────────────────────────────┘",
         ],
-        "artColor": 1
+        artColor: 1,
       },
       {
-        "title": "Pinned to a model",
-        "section": "Anatomy of an agent",
-        "body": [
+        title: "Pinned to a model",
+        section: "Anatomy of an agent",
+        body: [
           "",
           "  An agent is PINNED to a specific model",
           "  in its config, so its behavior does not",
@@ -190,17 +190,17 @@ export const TRACKS: Track[] = [
           "",
           "  A reviewer might pin a strong model for",
           "  judgment; a quick formatter might pin a",
-          "  small, fast one."
+          "  small, fast one.",
         ],
-        "highlight": {
-          "PINNED": 1,
-          "model:": 2
-        }
+        highlight: {
+          PINNED: 1,
+          "model:": 2,
+        },
       },
       {
-        "title": "Persona",
-        "section": "Anatomy of an agent",
-        "body": [
+        title: "Persona",
+        section: "Anatomy of an agent",
+        body: [
           "",
           "  The PERSONA is the agent's job, written",
           "  as a system prompt.",
@@ -211,16 +211,16 @@ export const TRACKS: Track[] = [
           "",
           "  A sharp persona is the difference between",
           "  a vague answer and exactly what you",
-          "  needed."
+          "  needed.",
         ],
-        "highlight": {
-          "PERSONA": 1
-        }
+        highlight: {
+          PERSONA: 1,
+        },
       },
       {
-        "title": "Tools",
-        "section": "Anatomy of an agent",
-        "body": [
+        title: "Tools",
+        section: "Anatomy of an agent",
+        body: [
           "",
           "  TOOLS are what the agent can actually do.",
           "",
@@ -231,16 +231,16 @@ export const TRACKS: Track[] = [
           "",
           "  Give an agent only the tools its job",
           "  needs. A reviewer gets Read and Grep,",
-          "  not Edit."
+          "  not Edit.",
         ],
-        "highlight": {
-          "TOOLS": 1
-        }
+        highlight: {
+          TOOLS: 1,
+        },
       },
       {
-        "title": "Permissions",
-        "section": "Anatomy of an agent",
-        "body": [
+        title: "Permissions",
+        section: "Anatomy of an agent",
+        body: [
           "",
           "  PERMISSIONS are the guardrails on those",
           "  tools.",
@@ -251,22 +251,22 @@ export const TRACKS: Track[] = [
           "  + full: implement and operate.",
           "",
           "  In paw, 14 of 18 agents are restricted.",
-          "  Trust comes from limits, not hope."
+          "  Trust comes from limits, not hope.",
         ],
-        "highlight": {
-          "PERMISSIONS": 1,
-          "+": 2
-        }
+        highlight: {
+          PERMISSIONS: 1,
+          "+": 2,
+        },
       },
       {
-        "title": "paw's pieces",
-        "section": "paw's pieces",
-        "body": [
+        title: "paw's pieces",
+        section: "paw's pieces",
+        body: [
           "",
           "  paw gives your agent five kinds of",
-          "  building block. Here is each one."
+          "  building block. Here is each one.",
         ],
-        "art": [
+        art: [
           "  ┌──────────┐  loads  ┌──────────┐",
           "  │  AGENTS  │ ──────> │  SKILLS  │",
           "  │ 18 roles │         │  domain  │",
@@ -276,14 +276,14 @@ export const TRACKS: Track[] = [
           "  ┌──────────┐  fire   ┌──────────┐",
           "  │  RULES   │ ──────> │  HOOKS   │",
           "  │  6 pages │         │  enforce │",
-          "  └──────────┘         └──────────┘"
+          "  └──────────┘         └──────────┘",
         ],
-        "artColor": 1
+        artColor: 1,
       },
       {
-        "title": "Agents and skills",
-        "section": "paw's pieces",
-        "body": [
+        title: "Agents and skills",
+        section: "paw's pieces",
+        body: [
           "",
           "  AGENTS are the workers. paw ships 18,",
           "  each with one narrow job: architect,",
@@ -294,17 +294,17 @@ export const TRACKS: Track[] = [
           "  frontend, git-safety, and others.",
           "",
           "  An agent loads a skill to get expertise",
-          "  without bloating every prompt."
+          "  without bloating every prompt.",
         ],
-        "highlight": {
-          "AGENTS": 1,
-          "SKILLS": 1
-        }
+        highlight: {
+          AGENTS: 1,
+          SKILLS: 1,
+        },
       },
       {
-        "title": "Hooks, rules, contexts",
-        "section": "paw's pieces",
-        "body": [
+        title: "Hooks, rules, contexts",
+        section: "paw's pieces",
+        body: [
           "",
           "  RULES are the source of truth: short",
           "  docs like 'never rebase published work'.",
@@ -316,18 +316,18 @@ export const TRACKS: Track[] = [
           "  CONTEXTS set the mindset: building vs",
           "  reviewing vs a security audit.",
           "",
-          "  Rules say it. Hooks make it stick."
+          "  Rules say it. Hooks make it stick.",
         ],
-        "highlight": {
-          "RULES": 1,
-          "HOOKS": 1,
-          "CONTEXTS": 1
-        }
+        highlight: {
+          RULES: 1,
+          HOOKS: 1,
+          CONTEXTS: 1,
+        },
       },
       {
-        "title": "How it all fits",
-        "section": "How it fits",
-        "body": [
+        title: "How it all fits",
+        section: "How it fits",
+        body: [
           "",
           "  Put together:",
           "",
@@ -338,13 +338,13 @@ export const TRACKS: Track[] = [
           "    inside a context that sets the mindset.",
           "",
           "  That is a Personal Agent Workforce:",
-          "  fast agents, real guardrails."
-        ]
+          "  fast agents, real guardrails.",
+        ],
       },
       {
-        "title": "Where to go next",
-        "section": "How it fits",
-        "body": [
+        title: "Where to go next",
+        section: "How it fits",
+        body: [
           "",
           "  You have the vocabulary. Now use it:",
           "",
@@ -352,32 +352,32 @@ export const TRACKS: Track[] = [
           "  + Getting started:   install and run it",
           "  + Try this week:     build your own agent",
           "",
-          "  The words are yours. Go build."
+          "  The words are yours. Go build.",
         ],
-        "highlight": {
-          "+": 2
-        }
-      }
-    ]
+        highlight: {
+          "+": 2,
+        },
+      },
+    ],
   },
   {
-    "id": "learn",
-    "title": "Learn paw",
-    "desc": "What paw is, the 5 components, concepts",
-    "time": "~5 min",
-    "icon": "📖",
-    "sections": [
+    id: "learn",
+    title: "Learn paw",
+    desc: "What paw is, the 5 components, concepts",
+    time: "~5 min",
+    icon: "📖",
+    sections: [
       "Welcome",
       "The Problem",
       "Components",
       "Agents",
-      "Hooks & Rules"
+      "Hooks & Rules",
     ],
-    "pages": [
+    pages: [
       {
-        "title": "Welcome to paw",
-        "section": "Welcome",
-        "body": [
+        title: "Welcome to paw",
+        section: "Welcome",
+        body: [
           "",
           "Personal Agent Workforce",
           "a Personal Agent Workforce",
@@ -386,9 +386,9 @@ export const TRACKS: Track[] = [
           "paw makes sure it writes code right.",
           "",
           "This track covers what paw is",
-          "and how it works."
+          "and how it works.",
         ],
-        "art": [
+        art: [
           "        _______________        ",
           "       /               \\       ",
           "      |  ┌───┐ ┌───┐  |       ",
@@ -400,17 +400,17 @@ export const TRACKS: Track[] = [
           "       \\   \\_____/   /        ",
           "        \\___________/         ",
           "         /    |    \\          ",
-          "        *     *     *         "
+          "        *     *     *         ",
         ],
-        "artColor": 1,
-        "typewriterTitle": true
+        artColor: 1,
+        typewriterTitle: true,
       },
       {
-        "title": "The Problem",
-        "section": "The Problem",
-        "body": [
+        title: "The Problem",
+        section: "The Problem",
+        body: [
           "",
-          "  You:    \"Add a login endpoint\"",
+          '  You:    "Add a login endpoint"',
           "",
           "  AI:     + Wrote the endpoint",
           "          + Handles POST /login",
@@ -423,17 +423,17 @@ export const TRACKS: Track[] = [
           "          - No test",
           "",
           "  The AI did what you asked.",
-          "  The problem is what you DIDN'T ask."
+          "  The problem is what you DIDN'T ask.",
         ],
-        "highlight": {
+        highlight: {
           "+": 2,
-          "-": 3
-        }
+          "-": 3,
+        },
       },
       {
-        "title": "Two Choices",
-        "section": "The Problem",
-        "body": [
+        title: "Two Choices",
+        section: "The Problem",
+        body: [
           "",
           "  OPTION A:",
           "  You review everything the AI writes.",
@@ -447,19 +447,19 @@ export const TRACKS: Track[] = [
           "  BEFORE the code reaches you.",
           "",
           "",
-          "  paw is Option B."
-        ]
+          "  paw is Option B.",
+        ],
       },
       {
-        "title": "How It All Fits Together",
-        "section": "Components",
-        "body": [
+        title: "How It All Fits Together",
+        section: "Components",
+        body: [
           "",
           "  5 layers, each works independently.",
           "  The pipeline composes them.",
-          "  It doesn't gate them."
+          "  It doesn't gate them.",
         ],
-        "art": [
+        art: [
           "  ┌──────────┐     ┌──────────┐     ┌──────────┐  ",
           "  │  AGENTS  │────▶│  SKILLS  │     │ CONTEXTS │  ",
           "  │ 18 roles │     │  domain  │     │  mindset │  ",
@@ -475,14 +475,14 @@ export const TRACKS: Track[] = [
           "       ▼                                           ",
           "  ┌──────────┐                                     ",
           "  │  HOOKS   │  ◄── fire on Claude Code events     ",
-          "  └──────────┘                                     "
+          "  └──────────┘                                     ",
         ],
-        "artColor": 1
+        artColor: 1,
       },
       {
-        "title": "Four Building Blocks",
-        "section": "Components",
-        "body": [
+        title: "Four Building Blocks",
+        section: "Components",
+        body: [
           "",
           "  AGENT  Give it a name, a model, a persona,",
           "         specific expertise. 'You are a",
@@ -500,9 +500,9 @@ export const TRACKS: Track[] = [
           "  RULE   The standards being suggested.",
           "         'All functions must have error",
           "         handling.' Rules can be broken --",
-          "         hooks can't."
+          "         hooks can't.",
         ],
-        "art": [
+        art: [
           "  ┌──────────────────────────────────────────────┐",
           "  │        FOUR BUILDING BLOCKS                   │",
           "  ├──────────────────────────────────────────────┤",
@@ -513,14 +513,14 @@ export const TRACKS: Track[] = [
           "  │  RULE   =  WHY it matters                    │",
           "  │                                              │",
           "  │  That's the whole thing.                     │",
-          "  └──────────────────────────────────────────────┘"
+          "  └──────────────────────────────────────────────┘",
         ],
-        "artColor": 2
+        artColor: 2,
       },
       {
-        "title": "Portable by Design",
-        "section": "Components",
-        "body": [
+        title: "Portable by Design",
+        section: "Components",
+        body: [
           "",
           "  If you build agents and rules around YOUR",
           "  workflow, they work in any AI tool.",
@@ -534,9 +534,9 @@ export const TRACKS: Track[] = [
           "  rules -- that's yours forever.",
           "",
           "  paw agents are just markdown files.",
-          "  No vendor lock-in. No magic."
+          "  No vendor lock-in. No magic.",
         ],
-        "art": [
+        art: [
           "  ┌──────────────────────────────────────────────┐",
           "  │  YOUR AGENTS + RULES = PORTABLE              │",
           "  ├──────────────────────────────────────────────┤",
@@ -549,14 +549,14 @@ export const TRACKS: Track[] = [
           "  │                                              │",
           "  │  Company platforms don't travel with you.    │",
           "  │  Agents and rules you write are YOURS.       │",
-          "  └──────────────────────────────────────────────┘"
+          "  └──────────────────────────────────────────────┘",
         ],
-        "artColor": 1
+        artColor: 1,
       },
       {
-        "title": "The Key Distinction",
-        "section": "Components",
-        "body": [
+        title: "The Key Distinction",
+        section: "Components",
+        body: [
           "",
           "  Agents without skills are smart but",
           "  uninformed.",
@@ -565,9 +565,9 @@ export const TRACKS: Track[] = [
           "  with no one to use it.",
           "",
           "  Hooks without either still enforce",
-          "  the rules -- that's the point."
+          "  the rules -- that's the point.",
         ],
-        "art": [
+        art: [
           "  ┌──────────┬──────────────┬──────────────┬──────────────┐",
           "  │          │   AGENTS     │   SKILLS     │   HOOKS      │",
           "  ├──────────┼──────────────┼──────────────┼──────────────┤",
@@ -578,32 +578,20 @@ export const TRACKS: Track[] = [
           "  │ Can fail │ Yes (retry)  │ N/A          │ Yes (blocks) │",
           "  │ Count    │ 18           │ 7            │ 4            │",
           "  │ Lives in │ agents/      │ skills/      │ hooks/       │",
-          "  └──────────┴──────────────┴──────────────┴──────────────┘"
+          "  └──────────┴──────────────┴──────────────┴──────────────┘",
         ],
-        "artColor": 3,
-        "artRowColors": [
-          3,
-          1,
-          3,
-          2,
-          4,
-          2,
-          4,
-          2,
-          4,
-          2,
-          3
-        ]
+        artColor: 3,
+        artRowColors: [3, 1, 3, 2, 4, 2, 4, 2, 4, 2, 3],
       },
       {
-        "title": "18 Agents, 5 Phases",
-        "section": "Agents",
-        "body": [
+        title: "18 Agents, 5 Phases",
+        section: "Agents",
+        body: [
           "",
           "  Each agent owns a phase or dimension.",
-          "  Each has minimum permissions for its job."
+          "  Each has minimum permissions for its job.",
         ],
-        "art": [
+        art: [
           "  ┌────────────────────────────────────────────┐",
           "  │          18 SPECIALIZED AGENTS              │",
           "  ├──────────────┬─────────────┬───────────────┤",
@@ -619,20 +607,20 @@ export const TRACKS: Track[] = [
           "  │              │ incident-   │ integration-   │",
           "  │  DOCUMENT    │  commander  │  tester        │",
           "  │ docs-writer  │             │ env-checker    │",
-          "  └──────────────┴─────────────┴───────────────┘"
+          "  └──────────────┴─────────────┴───────────────┘",
         ],
-        "artColor": 1
+        artColor: 1,
       },
       {
-        "title": "Trust Through Structural Limitation",
-        "section": "Agents",
-        "body": [
+        title: "Trust Through Structural Limitation",
+        section: "Agents",
+        body: [
           "",
           "  The security-reviewer CANNOT modify code.",
           "  The test-runner CANNOT edit source files.",
-          "  Only 4 of 18 get full access."
+          "  Only 4 of 18 get full access.",
         ],
-        "art": [
+        art: [
           "  ┌─────────────────────────────────────────────────┐",
           "  │           AGENT PERMISSION TIERS                 │",
           "  ├─────────────────────────────────────────────────┤",
@@ -646,20 +634,20 @@ export const TRACKS: Track[] = [
           "  │  ████████████████████████████████████████████   │",
           "  ├─────────────────────────────────────────────────┤",
           "  │  14 of 18 agents have RESTRICTED permissions.   │",
-          "  └─────────────────────────────────────────────────┘"
+          "  └─────────────────────────────────────────────────┘",
         ],
-        "artColor": 4
+        artColor: 4,
       },
       {
-        "title": "Hooks: Mechanical Enforcement",
-        "section": "Hooks & Rules",
-        "body": [
+        title: "Hooks: Mechanical Enforcement",
+        section: "Hooks & Rules",
+        body: [
           "",
           "  Hooks fire on Claude Code lifecycle events.",
           "  They don't suggest. They BLOCK.",
-          "  The dangerous command never executes."
+          "  The dangerous command never executes.",
         ],
-        "art": [
+        art: [
           "  You type:  git rebase main                    ",
           "                                                ",
           "  ┌────────────────────────────────────────────┐",
@@ -671,14 +659,14 @@ export const TRACKS: Track[] = [
           "  │   Use git pull origin <branch> instead.'   │",
           "  │                                            │",
           "  │  The command NEVER executes.               │",
-          "  └────────────────────────────────────────────┘"
+          "  └────────────────────────────────────────────┘",
         ],
-        "artColor": 3
+        artColor: 3,
       },
       {
-        "title": "Rules: Standards as Doctrine",
-        "section": "Hooks & Rules",
-        "body": [
+        title: "Rules: Standards as Doctrine",
+        section: "Hooks & Rules",
+        body: [
           "",
           "  6 rules. Each is a markdown file.",
           "  Anyone can read them. Anyone can propose",
@@ -691,13 +679,13 @@ export const TRACKS: Track[] = [
           "  branch-hygiene     Feature branch per task",
           "  security-basics    Validate input, encode output",
           "",
-          "  Rule --> Agent enforces --> Hook blocks"
-        ]
+          "  Rule --> Agent enforces --> Hook blocks",
+        ],
       },
       {
-        "title": "Mechanical, Not Cultural",
-        "section": "Hooks & Rules",
-        "body": [
+        title: "Mechanical, Not Cultural",
+        section: "Hooks & Rules",
+        body: [
           "",
           "  Tribal knowledge gets forgotten.",
           "  Style guides get skipped.",
@@ -709,9 +697,9 @@ export const TRACKS: Track[] = [
           "        -->  Hook prevents violations",
           "",
           "  The AI doesn't need to remember your",
-          "  standards. The system enforces them."
+          "  standards. The system enforces them.",
         ],
-        "art": [
+        art: [
           "  BEFORE (tribal knowledge):              ",
           "  ┌──────────────────────────────────────┐ ",
           "  │  'Hey, don't forget to write tests'  │ ",
@@ -727,29 +715,24 @@ export const TRACKS: Track[] = [
           "  │    → hooks/git_safety.py BLOCKS       │ ",
           "  │  rules/security-basics.md            │ ",
           "  │    → security-reviewer REPORTS        │ ",
-          "  └──────────────────────────────────────┘ "
+          "  └──────────────────────────────────────┘ ",
         ],
-        "artColor": 3
-      }
-    ]
+        artColor: 3,
+      },
+    ],
   },
   {
-    "id": "start",
-    "title": "Getting started",
-    "desc": "Install hooks, run agents, hands-on",
-    "time": "~5 min",
-    "icon": "🚀",
-    "sections": [
-      "Setup",
-      "Try Hooks",
-      "Try Agents",
-      "What's Next"
-    ],
-    "pages": [
+    id: "start",
+    title: "Getting started",
+    desc: "Install hooks, run agents, hands-on",
+    time: "~5 min",
+    icon: "🚀",
+    sections: ["Setup", "Try Hooks", "Try Agents", "What's Next"],
+    pages: [
       {
-        "title": "Install in 2 Minutes",
-        "section": "Setup",
-        "body": [
+        title: "Install in 2 Minutes",
+        section: "Setup",
+        body: [
           "",
           "  Step 1: Clone paw (anywhere you want)",
           "",
@@ -767,22 +750,22 @@ export const TRACKS: Track[] = [
           "    - Verifies everything works",
           "",
           "  Clone to ~/paw, ~/tools/paw, anywhere.",
-          "  Setup detects the path automatically."
-        ]
+          "  Setup detects the path automatically.",
+        ],
       },
       {
-        "title": "Test the Hooks",
-        "section": "Try Hooks",
-        "body": [
+        title: "Test the Hooks",
+        section: "Try Hooks",
+        body: [
           "",
           "  Open Claude Code and type:",
           "",
           "    > run git rebase main",
           "",
           "  It will be BLOCKED with an explanation.",
-          "  The command never executes."
+          "  The command never executes.",
         ],
-        "art": [
+        art: [
           "  You type:  git rebase main                    ",
           "                                                ",
           "  ┌────────────────────────────────────────────┐",
@@ -794,14 +777,14 @@ export const TRACKS: Track[] = [
           "  │   Use git pull origin <branch> instead.'   │",
           "  │                                            │",
           "  │  The command NEVER executes.               │",
-          "  └────────────────────────────────────────────┘"
+          "  └────────────────────────────────────────────┘",
         ],
-        "artColor": 3
+        artColor: 3,
       },
       {
-        "title": "More Hook Tests",
-        "section": "Try Hooks",
-        "body": [
+        title: "More Hook Tests",
+        section: "Try Hooks",
+        body: [
           "",
           "  Try these too:",
           "",
@@ -812,13 +795,13 @@ export const TRACKS: Track[] = [
           "    BLOCKED -- discards uncommitted work",
           "",
           "  > run git commit -m 'test'   (on main)",
-          "    BLOCKED -- create a feature branch"
-        ]
+          "    BLOCKED -- create a feature branch",
+        ],
       },
       {
-        "title": "Run a Review Agent",
-        "section": "Try Agents",
-        "body": [
+        title: "Run a Review Agent",
+        section: "Try Agents",
+        body: [
           "",
           "  Make sure you have a diff (any changes).",
           "  Then type in Claude Code:",
@@ -829,13 +812,13 @@ export const TRACKS: Track[] = [
           "  Look at the findings. Ask yourself:",
           "    - Did it catch anything you'd catch?",
           "    - Did it catch anything you WOULDN'T?",
-          "    - Are the severity levels honest?"
-        ]
+          "    - Are the severity levels honest?",
+        ],
       },
       {
-        "title": "Stack Multiple Reviewers",
-        "section": "Try Agents",
-        "body": [
+        title: "Stack Multiple Reviewers",
+        section: "Try Agents",
+        body: [
           "",
           "  Now run all three:",
           "",
@@ -849,13 +832,13 @@ export const TRACKS: Track[] = [
           "",
           "  Three independent perspectives.",
           "  Each catches different things.",
-          "  No single reviewer covers all dimensions."
-        ]
+          "  No single reviewer covers all dimensions.",
+        ],
       },
       {
-        "title": "What's Next",
-        "section": "What's Next",
-        "body": [
+        title: "What's Next",
+        section: "What's Next",
+        body: [
           "",
           "  TODAY:  Keep the hooks on. Run an agent.",
           "",
@@ -866,9 +849,9 @@ export const TRACKS: Track[] = [
           "    -> builder -> code-reviewer",
           "",
           "  Run the CLI track to learn paw commands.",
-          "  Run the Practice track to try the buggy app."
+          "  Run the Practice track to try the buggy app.",
         ],
-        "art": [
+        art: [
           "           /\\          ",
           "          /  \\         ",
           "         / || \\        ",
@@ -877,39 +860,34 @@ export const TRACKS: Track[] = [
           "      / ┌──────┐ \\    ",
           "     /  │ paw  │  \\   ",
           "    /   │  =>  │   \\  ",
-          "   /    │forge │    \\ ",
+          "   /    │ full │    \\ ",
           "  ╱     └──────┘     ╲",
           " ╱___________________╲",
           "     ╱╱╱    ╲╲╲       ",
-          "    ╱╱╱      ╲╲╲      "
+          "    ╱╱╱      ╲╲╲      ",
         ],
-        "artColor": 2,
-        "typewriterTitle": true
-      }
-    ]
+        artColor: 2,
+        typewriterTitle: true,
+      },
+    ],
   },
   {
-    "id": "cli",
-    "title": "The paw CLI",
-    "desc": "Commands, presets, init, doctor",
-    "time": "~3 min",
-    "icon": "⌨",
-    "sections": [
-      "Overview",
-      "Quality Gates",
-      "Smart Tools",
-      "Config & Health"
-    ],
-    "pages": [
+    id: "cli",
+    title: "The paw CLI",
+    desc: "Commands, presets, init, doctor",
+    time: "~3 min",
+    icon: "⌨",
+    sections: ["Overview", "Quality Gates", "Smart Tools", "Config & Health"],
+    pages: [
       {
-        "title": "The paw CLI",
-        "section": "Overview",
-        "body": [
+        title: "The paw CLI",
+        section: "Overview",
+        body: [
           "",
           "  One command for everything.",
-          "  Tab-completable. No memorizing prompts."
+          "  Tab-completable. No memorizing prompts.",
         ],
-        "art": [
+        art: [
           "  ┌────────────────────────────────────────────┐",
           "  │  $ paw <command>                           │",
           "  ├────────────────────────────────────────────┤",
@@ -921,14 +899,14 @@ export const TRACKS: Track[] = [
           "  │  gate <name> run a single agent            │",
           "  │  agents      list all 18 agents            │",
           "  │  version     show version                  │",
-          "  └────────────────────────────────────────────┘"
+          "  └────────────────────────────────────────────┘",
         ],
-        "artColor": 1
+        artColor: 1,
       },
       {
-        "title": "Quality Gate Presets",
-        "section": "Quality Gates",
-        "body": [
+        title: "Quality Gate Presets",
+        section: "Quality Gates",
+        body: [
           "",
           "  Three presets for different situations:",
           "",
@@ -941,13 +919,13 @@ export const TRACKS: Track[] = [
           "",
           "  paw check --thorough",
           "    All 8 reviewers. Before merging big",
-          "    features or security-sensitive code."
-        ]
+          "    features or security-sensitive code.",
+        ],
       },
       {
-        "title": "Single Gates & Agent List",
-        "section": "Quality Gates",
-        "body": [
+        title: "Single Gates & Agent List",
+        section: "Quality Gates",
+        body: [
           "",
           "  Run a single agent:",
           "",
@@ -962,13 +940,13 @@ export const TRACKS: Track[] = [
           "",
           "  List all agents:",
           "",
-          "    paw agents"
-        ]
+          "    paw agents",
+        ],
       },
       {
-        "title": "Smart Suggestions",
-        "section": "Smart Tools",
-        "body": [
+        title: "Smart Suggestions",
+        section: "Smart Tools",
+        body: [
           "",
           "  paw suggest",
           "    Reads your project files. Detects your",
@@ -983,9 +961,9 @@ export const TRACKS: Track[] = [
           "  paw cheatsheet",
           "    One-screen quick reference card.",
           "    All commands, agents, prompts, workflows.",
-          "    Also available as printable PDF."
+          "    Also available as printable PDF.",
         ],
-        "art": [
+        art: [
           "  ┌────────────────────────────────────────────┐",
           "  │  $ paw suggest                             │",
           "  ├────────────────────────────────────────────┤",
@@ -994,14 +972,14 @@ export const TRACKS: Track[] = [
           "  │    ✓ fe-reviewer     (React/JSX)            │",
           "  │    ✓ security        (npm audit)            │",
           "  │    ✗ php-reviewer    (not needed)           │",
-          "  └────────────────────────────────────────────┘"
+          "  └────────────────────────────────────────────┘",
         ],
-        "artColor": 2
+        artColor: 2,
       },
       {
-        "title": "paw init -- Team Config",
-        "section": "Config & Health",
-        "body": [
+        title: "paw init -- Team Config",
+        section: "Config & Health",
+        body: [
           "",
           "  Scaffold a config for your project:",
           "",
@@ -1014,13 +992,13 @@ export const TRACKS: Track[] = [
           "    - history settings",
           "",
           "  Check .paw.json into version control.",
-          "  Your whole team shares the config."
-        ]
+          "  Your whole team shares the config.",
+        ],
       },
       {
-        "title": "paw doctor -- Diagnose Issues",
-        "section": "Config & Health",
-        "body": [
+        title: "paw doctor -- Diagnose Issues",
+        section: "Config & Health",
+        body: [
           "",
           "  Something broken? Run:",
           "",
@@ -1035,27 +1013,23 @@ export const TRACKS: Track[] = [
           "    - Test suite passes",
           "",
           "  Tells you exactly what's wrong",
-          "  and how to fix it."
-        ]
-      }
-    ]
+          "  and how to fix it.",
+        ],
+      },
+    ],
   },
   {
-    "id": "advanced",
-    "title": "Advanced tactics",
-    "desc": "Workflows, team config, customization",
-    "time": "~4 min",
-    "icon": "⚙",
-    "sections": [
-      "Workflows",
-      "Customizing",
-      "Scaling Up"
-    ],
-    "pages": [
+    id: "advanced",
+    title: "Advanced tactics",
+    desc: "Workflows, team config, customization",
+    time: "~4 min",
+    icon: "⚙",
+    sections: ["Workflows", "Customizing", "Scaling Up"],
+    pages: [
       {
-        "title": "The Full Workflow",
-        "section": "Workflows",
-        "body": [
+        title: "The Full Workflow",
+        section: "Workflows",
+        body: [
           "",
           "  Plan -> Critique -> Build -> Review",
           "",
@@ -1074,13 +1048,13 @@ export const TRACKS: Track[] = [
           "     the changes.",
           "",
           "  The devil's advocate attacks the plan",
-          "  BEFORE any code is written."
-        ]
+          "  BEFORE any code is written.",
+        ],
       },
       {
-        "title": "Incident Response",
-        "section": "Workflows",
-        "body": [
+        title: "Incident Response",
+        section: "Workflows",
+        body: [
           "",
           "  Production fire? Use the workflow:",
           "",
@@ -1095,13 +1069,13 @@ export const TRACKS: Track[] = [
           "",
           "  The incident-commander loads the",
           "  security context -- adversarial mindset,",
-          "  assume worst case."
-        ]
+          "  assume worst case.",
+        ],
       },
       {
-        "title": "Workshop: Write Your Own Rule",
-        "section": "Customizing",
-        "body": [
+        title: "Workshop: Write Your Own Rule",
+        section: "Customizing",
+        body: [
           "",
           "  Think of one standard your team follows",
           "  that ISN'T written down anywhere.",
@@ -1119,13 +1093,13 @@ export const TRACKS: Track[] = [
           "",
           "  Reference it in the agent's Rules section.",
           "  The rule is now mechanically enforced --",
-          "  not tribal knowledge that gets forgotten."
-        ]
+          "  not tribal knowledge that gets forgotten.",
+        ],
       },
       {
-        "title": "Adding Your Own Agent",
-        "section": "Customizing",
-        "body": [
+        title: "Adding Your Own Agent",
+        section: "Customizing",
+        body: [
           "",
           "  Create agents/your-agent.md:",
           "",
@@ -1141,26 +1115,23 @@ export const TRACKS: Track[] = [
           "    Failure modes, Done when.",
           "",
           "  Most agents are read-only.",
-          "  Only grant write/bash when needed."
-        ]
+          "  Only grant write/bash when needed.",
+        ],
       },
       {
-        "title": "paw to forge",
-        "section": "Scaling Up",
-        "body": [
+        title: "paw to a full pipeline",
+        section: "Scaling Up",
+        body: [
           "",
-          "  paw                    forge",
-          "  18 agents              46 agents",
-          "  Manual invocation      16-phase pipeline",
-          "  You sequence work      Orchestrator does",
-          "  You run reviews        15 gates parallel",
-          "  4 hooks                8 + self-healing",
-          "  6 rules                21 doctrine pages",
-          "",
-          "  Start with paw.",
-          "  Graduate to forge when you're ready."
+          "  paw                    a full pipeline",
+          "  18 agents              46+ agents",
+          "  Manual invocation      16-phase orchestrator",
+          "  You sequence work      The pipeline does",
+          "  You run reviews        Parallel review fan-out",
+          "  4 hooks                Hooks plus self-healing",
+          "  6 rules                A wider doctrine set",
         ],
-        "art": [
+        art: [
           "           /\\          ",
           "          /  \\         ",
           "         / || \\        ",
@@ -1169,32 +1140,28 @@ export const TRACKS: Track[] = [
           "      / ┌──────┐ \\    ",
           "     /  │ paw  │  \\   ",
           "    /   │  =>  │   \\  ",
-          "   /    │forge │    \\ ",
+          "   /    │ full │    \\ ",
           "  ╱     └──────┘     ╲",
           " ╱___________________╲",
           "     ╱╱╱    ╲╲╲       ",
-          "    ╱╱╱      ╲╲╲      "
+          "    ╱╱╱      ╲╲╲      ",
         ],
-        "artColor": 2
-      }
-    ]
+        artColor: 2,
+      },
+    ],
   },
   {
-    "id": "practice",
-    "title": "Practice with examples",
-    "desc": "Run agents against a buggy app",
-    "time": "~5 min",
-    "icon": "🐛",
-    "sections": [
-      "The Buggy App",
-      "Run Agents",
-      "Results"
-    ],
-    "pages": [
+    id: "practice",
+    title: "Practice with examples",
+    desc: "Run agents against a buggy app",
+    time: "~5 min",
+    icon: "🐛",
+    sections: ["The Buggy App", "Run Agents", "Results"],
+    pages: [
       {
-        "title": "Meet the Buggy App",
-        "section": "The Buggy App",
-        "body": [
+        title: "Meet the Buggy App",
+        section: "The Buggy App",
+        body: [
           "",
           "  examples/buggy-app/app.py is a",
           "  deliberately broken Python app.",
@@ -1202,9 +1169,9 @@ export const TRACKS: Track[] = [
           "  Your mission: run paw's review agents",
           "  and see how many issues they find.",
           "",
-          "  Don't read the README spoilers yet."
+          "  Don't read the README spoilers yet.",
         ],
-        "art": [
+        art: [
           "  ┌────────────────────────────────────────────┐",
           "  │  examples/buggy-app/app.py                 │",
           "  ├────────────────────────────────────────────┤",
@@ -1213,14 +1180,14 @@ export const TRACKS: Track[] = [
           "  │  1 N+1 query          (perf)               │",
           "  │  0 tests              (oops)               │",
           "  │  0 input validation   (yikes)              │",
-          "  └────────────────────────────────────────────┘"
+          "  └────────────────────────────────────────────┘",
         ],
-        "artColor": 3
+        artColor: 3,
       },
       {
-        "title": "What to Look For",
-        "section": "The Buggy App",
-        "body": [
+        title: "What to Look For",
+        section: "The Buggy App",
+        body: [
           "",
           "  The app has problems in every category:",
           "",
@@ -1235,13 +1202,13 @@ export const TRACKS: Track[] = [
           "  QUALITY    Zero tests, no input validation,",
           "             no error handling on DB connection",
           "",
-          "  How many can the agents find?"
-        ]
+          "  How many can the agents find?",
+        ],
       },
       {
-        "title": "Run the Security Reviewer",
-        "section": "Run Agents",
-        "body": [
+        title: "Run the Security Reviewer",
+        section: "Run Agents",
+        body: [
           "",
           "  Start with security:",
           "",
@@ -1255,13 +1222,13 @@ export const TRACKS: Track[] = [
           "  levels, exploit paths.",
           "",
           "  How many of the 6 security holes",
-          "  does it find?"
-        ]
+          "  does it find?",
+        ],
       },
       {
-        "title": "Run the Bug Auditor",
-        "section": "Run Agents",
-        "body": [
+        title: "Run the Bug Auditor",
+        section: "Run Agents",
+        body: [
           "",
           "  Now bugs:",
           "",
@@ -1274,13 +1241,13 @@ export const TRACKS: Track[] = [
           "  the checklist categories (off-by-one,",
           "  race condition, bare except, etc.)",
           "",
-          "  How many of the 4 bugs does it find?"
-        ]
+          "  How many of the 4 bugs does it find?",
+        ],
       },
       {
-        "title": "Run the Perf Checker",
-        "section": "Run Agents",
-        "body": [
+        title: "Run the Perf Checker",
+        section: "Run Agents",
+        body: [
           "",
           "  Performance:",
           "",
@@ -1294,13 +1261,13 @@ export const TRACKS: Track[] = [
           "  at scale?",
           "",
           "  Good findings include scale impact:",
-          "  \"fine at 100, breaks at 100K\""
-        ]
+          '  "fine at 100, breaks at 100K"',
+        ],
       },
       {
-        "title": "Check Your Results",
-        "section": "Results",
-        "body": [
+        title: "Check Your Results",
+        section: "Results",
+        body: [
           "",
           "  Open examples/buggy-app/README.md",
           "  and click the spoiler tag.",
@@ -1316,29 +1283,29 @@ export const TRACKS: Track[] = [
           "  - Would you have caught all of these",
           "    in a manual review?",
           "",
-          "  Now try: paw check --thorough"
-        ]
-      }
-    ]
+          "  Now try: paw check --thorough",
+        ],
+      },
+    ],
   },
   {
-    "id": "hooks",
-    "title": "Hooks deep dive",
-    "desc": "How enforcement works, test and write hooks",
-    "time": "~4 min",
-    "icon": "🛡",
-    "sections": [
+    id: "hooks",
+    title: "Hooks deep dive",
+    desc: "How enforcement works, test and write hooks",
+    time: "~4 min",
+    icon: "🛡",
+    sections: [
       "Anatomy",
       "The Four Hooks",
       "Test Standalone",
       "Overrides",
-      "Write Your Own"
+      "Write Your Own",
     ],
-    "pages": [
+    pages: [
       {
-        "title": "How a Hook Works",
-        "section": "Anatomy",
-        "body": [
+        title: "How a Hook Works",
+        section: "Anatomy",
+        body: [
           "",
           "  A hook is a script wired to a Claude Code",
           "  lifecycle event.",
@@ -1353,9 +1320,9 @@ export const TRACKS: Track[] = [
           "            shows the agent your message.",
           "",
           "  No AI involved. No judgment. Just code",
-          "  that runs every single time."
+          "  that runs every single time.",
         ],
-        "art": [
+        art: [
           "  ┌──────────────────────────────────────────┐",
           "  │            ANATOMY OF A HOOK              │",
           "  ├──────────────────────────────────────────┤",
@@ -1364,13 +1331,13 @@ export const TRACKS: Track[] = [
           "  │  INPUT     JSON payload on stdin          │",
           "  │  OUTPUT    exit 0 = allow                 │",
           "  │            exit 2 = BLOCK + message       │",
-          "  └──────────────────────────────────────────┘"
-        ]
+          "  └──────────────────────────────────────────┘",
+        ],
       },
       {
-        "title": "The Four Hooks",
-        "section": "The Four Hooks",
-        "body": [
+        title: "The Four Hooks",
+        section: "The Four Hooks",
+        body: [
           "",
           "  git_safety.py       PreToolUse : Bash",
           "    Blocks rebase, force-push, branch -D,",
@@ -1388,46 +1355,46 @@ export const TRACKS: Track[] = [
           "    read_payload, emit, find_project_root.",
           "",
           "  install_hooks.py wires them into",
-          "  ~/.claude/settings.json (via ./paw setup)."
-        ]
+          "  ~/.claude/settings.json (via ./paw setup).",
+        ],
       },
       {
-        "title": "Pipe-Test Before You Wire",
-        "section": "Test Standalone",
-        "body": [
+        title: "Pipe-Test Before You Wire",
+        section: "Test Standalone",
+        body: [
           "",
           "  Every hook is testable standalone --",
           "  before it touches your settings:",
           "",
-          "  echo '{\"tool_input\":{\"command\":",
-          "    \"git rebase main\"}}' |",
+          '  echo \'{"tool_input":{"command":',
+          '    "git rebase main"}}\' |',
           "    python3 hooks/git_safety.py",
           "  echo exit=$?    # expect 2",
           "",
           "  Safe commands pass:",
           "",
-          "  echo '{\"tool_input\":{\"command\":",
-          "    \"git status\"}}' |",
+          '  echo \'{"tool_input":{"command":',
+          '    "git status"}}\' |',
           "    python3 hooks/git_safety.py",
           "  echo exit=$?    # expect 0",
           "",
           "  Then run the real test suite:",
-          "    python3 -m pytest tests/ -v"
+          "    python3 -m pytest tests/ -v",
         ],
-        "art": [
+        art: [
           "  ┌────────────────────────────────────────────┐",
           "  │  $ echo '{...\"git rebase main\"}'           │",
           "  │      | python3 hooks/git_safety.py         │",
           "  │                                            │",
           "  │  git rebase rewrites published history.    │",
           "  │  exit=2  ← BLOCKED                         │",
-          "  └────────────────────────────────────────────┘"
-        ]
+          "  └────────────────────────────────────────────┘",
+        ],
       },
       {
-        "title": "Escape Hatches",
-        "section": "Overrides",
-        "body": [
+        title: "Escape Hatches",
+        section: "Overrides",
+        body: [
           "",
           "  Hooks block by default, but paw gives",
           "  you explicit, auditable overrides:",
@@ -1441,13 +1408,13 @@ export const TRACKS: Track[] = [
           "",
           "  The point isn't to make rules unbreakable.",
           "  It's to make breaking them a deliberate,",
-          "  visible act instead of an accident."
-        ]
+          "  visible act instead of an accident.",
+        ],
       },
       {
-        "title": "Write Your Own Hook",
-        "section": "Write Your Own",
-        "body": [
+        title: "Write Your Own Hook",
+        section: "Write Your Own",
+        body: [
           "",
           "  1. Copy the pattern from an existing hook.",
           "     Import read_payload + emit from _lib.",
@@ -1464,29 +1431,29 @@ export const TRACKS: Track[] = [
           "     with the matching event + matcher.",
           "",
           "  Ideas: block npm publish, warn on TODO",
-          "  in committed code, block edits to .env."
-        ]
-      }
-    ]
+          "  in committed code, block edits to .env.",
+        ],
+      },
+    ],
   },
   {
-    "id": "recipes",
-    "title": "Daily workflows",
-    "desc": "Real-world recipes: PRs, incidents, refactors",
-    "time": "~4 min",
-    "icon": "🍳",
-    "sections": [
+    id: "recipes",
+    title: "Daily workflows",
+    desc: "Real-world recipes: PRs, incidents, refactors",
+    time: "~4 min",
+    icon: "🍳",
+    sections: [
       "Ship a PR",
       "Plan a Feature",
       "Fix an Incident",
       "Refactor Safely",
-      "Team Setup"
+      "Team Setup",
     ],
-    "pages": [
+    pages: [
       {
-        "title": "Recipe: The Pre-PR Ritual",
-        "section": "Ship a PR",
-        "body": [
+        title: "Recipe: The Pre-PR Ritual",
+        section: "Ship a PR",
+        body: [
           "",
           "  Before every PR:",
           "",
@@ -1497,9 +1464,9 @@ export const TRACKS: Track[] = [
           "",
           "  Cheap loop first, expensive loop once.",
           "  Reviewers on the PR see clean code --",
-          "  and start trusting your diffs."
+          "  and start trusting your diffs.",
         ],
-        "art": [
+        art: [
           "  ┌───────────────────────────────────────┐",
           "  │        THE PRE-PR RITUAL               │",
           "  ├───────────────────────────────────────┤",
@@ -1508,13 +1475,13 @@ export const TRACKS: Track[] = [
           "  │            └──────────────┘            │",
           "  │                                        │",
           "  │  paw check --thorough  →  push  →  PR  │",
-          "  └───────────────────────────────────────┘"
-        ]
+          "  └───────────────────────────────────────┘",
+        ],
       },
       {
-        "title": "Recipe: Plan Before You Build",
-        "section": "Plan a Feature",
-        "body": [
+        title: "Recipe: Plan Before You Build",
+        section: "Plan a Feature",
+        body: [
           "",
           "  For anything bigger than a bug fix:",
           "",
@@ -1533,13 +1500,13 @@ export const TRACKS: Track[] = [
           "",
           "  The devils-advocate step is the one",
           "  people skip. It's also the one that",
-          "  catches the expensive mistakes."
-        ]
+          "  catches the expensive mistakes.",
+        ],
       },
       {
-        "title": "Recipe: Incident Response",
-        "section": "Fix an Incident",
-        "body": [
+        title: "Recipe: Incident Response",
+        section: "Fix an Incident",
+        body: [
           "",
           "  Production is broken. Don't improvise:",
           "",
@@ -1551,13 +1518,13 @@ export const TRACKS: Track[] = [
           "",
           "  Rollback plan BEFORE the fix. If the",
           "  fix goes sideways at 2am, you want the",
-          "  exit mapped while you were still calm."
-        ]
+          "  exit mapped while you were still calm.",
+        ],
       },
       {
-        "title": "Recipe: Refactor Without Fear",
-        "section": "Refactor Safely",
-        "body": [
+        title: "Recipe: Refactor Without Fear",
+        section: "Refactor Safely",
+        body: [
           "",
           "  Refactors fail when behavior changes",
           "  silently. Lock behavior down first:",
@@ -1571,13 +1538,13 @@ export const TRACKS: Track[] = [
           "",
           "  Small commits keep git bisect useful --",
           "  that's paw's git doctrine working",
-          "  for you."
-        ]
+          "  for you.",
+        ],
       },
       {
-        "title": "Recipe: Set Up a Team Repo",
-        "section": "Team Setup",
-        "body": [
+        title: "Recipe: Set Up a Team Repo",
+        section: "Team Setup",
+        body: [
           "",
           "  Make the standards travel with the repo:",
           "",
@@ -1590,45 +1557,42 @@ export const TRACKS: Track[] = [
           "",
           "  New teammate onboarding becomes:",
           "  clone, ./paw setup, done. The rules",
-          "  are enforced before they read a wiki."
-        ]
-      }
-    ]
+          "  are enforced before they read a wiki.",
+        ],
+      },
+    ],
   },
   {
-    "id": "try",
-    "title": "Try this week",
-    "desc": "Build your first agent, rule, skill, hook",
-    "time": "~3 min",
-    "icon": "🎯",
-    "sections": [
-      "Start Here",
-      "Build Yours"
-    ],
-    "pages": [
+    id: "try",
+    title: "Try this week",
+    desc: "Build your first agent, rule, skill, hook",
+    time: "~3 min",
+    icon: "🎯",
+    sections: ["Start Here", "Build Yours"],
+    pages: [
       {
-        "title": "Your First Agent in 60 Seconds",
-        "section": "Start Here",
-        "body": [
+        title: "Your First Agent in 60 Seconds",
+        section: "Start Here",
+        body: [
           "",
           "  You don't need to install anything.",
           "  You don't need a framework.",
           "",
           "  Open your AI tool and paste:",
           "",
-          "  \"You are [your name]. You are an expert",
+          '  "You are [your name]. You are an expert',
           "   at [thing you're good at]. When asked",
           "   to [task], you always [your approach].",
-          "   You never [thing you always catch].\"",
+          '   You never [thing you always catch]."',
           "",
           "  That's your first agent.",
-          "  Iterate from there."
-        ]
+          "  Iterate from there.",
+        ],
       },
       {
-        "title": "Find Your Rule",
-        "section": "Start Here",
-        "body": [
+        title: "Find Your Rule",
+        section: "Start Here",
+        body: [
           "",
           "  Think about one thing you check EVERY",
           "  time you review someone's work.",
@@ -1642,13 +1606,13 @@ export const TRACKS: Track[] = [
           "  Write it down. One sentence.",
           "",
           "  That's a rule. Put it in rules/your-rule.md",
-          "  and your AI enforces it every time."
-        ]
+          "  and your AI enforces it every time.",
+        ],
       },
       {
-        "title": "Find Your Skill",
-        "section": "Start Here",
-        "body": [
+        title: "Find Your Skill",
+        section: "Start Here",
+        body: [
           "",
           "  Think about one repetitive task you do",
           "  the same way every time.",
@@ -1661,13 +1625,13 @@ export const TRACKS: Track[] = [
           "",
           "  Write down the steps. That's a skill.",
           "  Put it in skills/your-skill/SKILL.md",
-          "  and your agents can learn it."
-        ]
+          "  and your agents can learn it.",
+        ],
       },
       {
-        "title": "Find Your Hook",
-        "section": "Build Yours",
-        "body": [
+        title: "Find Your Hook",
+        section: "Build Yours",
+        body: [
           "",
           "  Think about one thing that should ALWAYS",
           "  happen before you ship work.",
@@ -1681,13 +1645,13 @@ export const TRACKS: Track[] = [
           "  That's a hook. Write a script that checks",
           "  for it and blocks if it fails.",
           "",
-          "  Rules can be broken. Hooks can't."
-        ]
+          "  Rules can be broken. Hooks can't.",
+        ],
       },
       {
-        "title": "The Whole Point",
-        "section": "Build Yours",
-        "body": [
+        title: "The Whole Point",
+        section: "Build Yours",
+        body: [
           "",
           "  You can build a personal AI workforce",
           "  that does your repetitive work the way",
@@ -1699,9 +1663,9 @@ export const TRACKS: Track[] = [
           "  you already do. That's it.",
           "",
           "  paw gives you the structure.",
-          "  You bring the standards."
+          "  You bring the standards.",
         ],
-        "art": [
+        art: [
           "  ┌──────────────────────────────────────────────┐",
           "  │  YOUR AGENTS + RULES = PORTABLE              │",
           "  ├──────────────────────────────────────────────┤",
@@ -1714,29 +1678,25 @@ export const TRACKS: Track[] = [
           "  │                                              │",
           "  │  Company platforms don't travel with you.    │",
           "  │  Agents and rules you write are YOURS.       │",
-          "  └──────────────────────────────────────────────┘"
+          "  └──────────────────────────────────────────────┘",
         ],
-        "artColor": 1,
-        "typewriterTitle": true
-      }
-    ]
+        artColor: 1,
+        typewriterTitle: true,
+      },
+    ],
   },
   {
-    "id": "contribute",
-    "title": "Contributing to paw",
-    "desc": "Fork, test, submit a PR",
-    "time": "~2 min",
-    "icon": "🤝",
-    "sections": [
-      "Getting Started",
-      "What to Build",
-      "Submit"
-    ],
-    "pages": [
+    id: "contribute",
+    title: "Contributing to paw",
+    desc: "Fork, test, submit a PR",
+    time: "~2 min",
+    icon: "🤝",
+    sections: ["Getting Started", "What to Build", "Submit"],
+    pages: [
       {
-        "title": "Contributing to paw",
-        "section": "Getting Started",
-        "body": [
+        title: "Contributing to paw",
+        section: "Getting Started",
+        body: [
           "",
           "  paw is open source. Contributions welcome.",
           "",
@@ -1744,9 +1704,9 @@ export const TRACKS: Track[] = [
           "  Open an issue first for large changes.",
           "",
           "  Small fixes (typos, bug fixes, tests)",
-          "  can go straight to a PR."
+          "  can go straight to a PR.",
         ],
-        "art": [
+        art: [
           "  ┌────────────────────────────────────────────┐",
           "  │         CONTRIBUTING TO PAW                 │",
           "  ├────────────────────────────────────────────┤",
@@ -1758,14 +1718,14 @@ export const TRACKS: Track[] = [
           "  │  ruff format --check .                     │",
           "  │                                            │",
           "  │  All PRs require maintainer approval.      │",
-          "  └────────────────────────────────────────────┘"
+          "  └────────────────────────────────────────────┘",
         ],
-        "artColor": 1
+        artColor: 1,
       },
       {
-        "title": "Dev Setup",
-        "section": "Getting Started",
-        "body": [
+        title: "Dev Setup",
+        section: "Getting Started",
+        body: [
           "",
           "  Fork the repo on GitHub, then:",
           "",
@@ -1781,13 +1741,13 @@ export const TRACKS: Track[] = [
           "  Verify:",
           "    python3 -m pytest tests/ -v",
           "    ruff check .",
-          "    ruff format --check ."
-        ]
+          "    ruff format --check .",
+        ],
       },
       {
-        "title": "What You Can Build",
-        "section": "What to Build",
-        "body": [
+        title: "What You Can Build",
+        section: "What to Build",
+        body: [
           "",
           "  AGENTS   Follow agents/architect.md pattern.",
           "           Pick a context, rules, minimum tools.",
@@ -1803,13 +1763,13 @@ export const TRACKS: Track[] = [
           "           These are security-critical code.",
           "",
           "  TESTS    More coverage always welcome.",
-          "           Edge cases in hooks especially."
-        ]
+          "           Edge cases in hooks especially.",
+        ],
       },
       {
-        "title": "Before You Submit",
-        "section": "Submit",
-        "body": [
+        title: "Before You Submit",
+        section: "Submit",
+        body: [
           "",
           "  Every PR must pass these checks:",
           "",
@@ -1826,11 +1786,11 @@ export const TRACKS: Track[] = [
           "    - Reference related issues",
           "    - Tests before code",
           "",
-          "  See CONTRIBUTING.md for the full guide."
-        ]
-      }
-    ]
-  }
+          "  See CONTRIBUTING.md for the full guide.",
+        ],
+      },
+    ],
+  },
 ];
 
 /** Track ids, in order. */
@@ -1840,4 +1800,3 @@ export const TRACK_IDS: string[] = TRACKS.map((t) => t.id);
 export function getTrack(id: string): Track | undefined {
   return TRACKS.find((t) => t.id === id);
 }
-
