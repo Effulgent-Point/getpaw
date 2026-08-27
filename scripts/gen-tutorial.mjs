@@ -109,13 +109,73 @@ try {
   fail(`could not parse python output as JSON: ${err.message}`);
 }
 
+// ---- upstream leak sanitizer -----------------------------------------------
+// The upstream content.py in the paw repo still contains references to
+// a specific downstream pipeline product by name. The public getpaw.dev
+// site is intentionally generic — "the pipeline," "the harness" — so
+// every reference has to be rewritten here on regen, otherwise the next
+// `npm run gen` reintroduces the leak that PR #2 scrubbed in place.
+//
+// Ordered map: longer / more specific replacements first so they don't
+// get partially consumed by later rules. Case-sensitive by design so
+// title case ("Forge") vs word ("forge") can be rewritten independently.
+const SANITIZE_MAP = [
+  ["paw to forge", "paw to a full pipeline"],
+  [
+    "Graduate to forge when you're ready",
+    "Graduate to a full pipeline when you're ready",
+  ],
+  ["│forge │", "│ pipe │"], // preserves the ascii box width
+  ["forge is", "the full pipeline is"],
+  ["forge does", "a full pipeline does"],
+  ["forge:", "the pipeline:"],
+  ["Forge ", "The pipeline "], // sentence-initial; trailing space avoids "Forget"
+  [" forge ", " the pipeline "],
+  [" forge.", " the pipeline."],
+  [" forge,", " the pipeline,"],
+];
+
+// Final belt-and-suspenders pass: any remaining word-boundary occurrence
+// of the specific tool name (case-insensitive) gets rewritten to a generic
+// term. This catches the tail cases the ordered map above can miss —
+// end-of-line "forge" in ASCII art, search-index keyword strings, etc.
+// The word "forget" (five letters, "forge" + "t") does NOT trigger this
+// because \b requires a word boundary AFTER the match.
+const FALLBACK_WORD_RE = /\bforge\b/gi;
+function fallbackWordReplace(s) {
+  return s.replace(FALLBACK_WORD_RE, (match) =>
+    match[0] === match[0].toUpperCase() ? "Pipeline" : "pipeline",
+  );
+}
+
+function sanitize(value) {
+  if (typeof value === "string") {
+    let out = value;
+    for (const [from, to] of SANITIZE_MAP) {
+      if (out.includes(from)) out = out.split(from).join(to);
+    }
+    out = fallbackWordReplace(out);
+    return out;
+  }
+  if (Array.isArray(value)) return value.map(sanitize);
+  if (value && typeof value === "object") {
+    const next = {};
+    for (const [k, v] of Object.entries(value)) next[k] = sanitize(v);
+    return next;
+  }
+  return value;
+}
+
+parsed = sanitize(parsed);
+
 const { version, tracks, all } = parsed;
 if (!Array.isArray(tracks) || tracks.length === 0) fail("TRACKS is empty");
 if (!all || typeof all !== "object") fail("ALL_TRACKS is missing");
 
 // ---- validation + transform -------------------------------------------------
 
-const isStrArray = (v) => Array.isArray(v) && v.every((x) => typeof x === "string");
+const isStrArray = (v) =>
+  Array.isArray(v) && v.every((x) => typeof x === "string");
 const isColor = (v) => Number.isInteger(v) && v >= 1 && v <= 5;
 // Per-row art colors additionally allow 0, the "no override, fall back to the
 // block color" sentinel that engine.py and lib/tutorial/render.ts both honor.
@@ -139,13 +199,16 @@ let totalPages = 0;
 
 for (const meta of tracks) {
   for (const k of ["id", "title", "desc", "time", "icon"]) {
-    if (typeof meta[k] !== "string") fail(`track meta missing string "${k}": ${JSON.stringify(meta)}`);
+    if (typeof meta[k] !== "string")
+      fail(`track meta missing string "${k}": ${JSON.stringify(meta)}`);
   }
   const entry = all[meta.id];
   if (!entry) fail(`track "${meta.id}" is in TRACKS but not in ALL_TRACKS`);
 
-  if (!isStrArray(entry.sections)) fail(`track "${meta.id}" sections must be string[]`);
-  if (!Array.isArray(entry.pages)) fail(`track "${meta.id}" pages must be an array`);
+  if (!isStrArray(entry.sections))
+    fail(`track "${meta.id}" sections must be string[]`);
+  if (!Array.isArray(entry.pages))
+    fail(`track "${meta.id}" pages must be an array`);
 
   const sections = entry.sections.map(deDash);
   const pages = entry.pages;
@@ -156,15 +219,21 @@ for (const meta of tracks) {
     // strict key allowlist: guards against upstream shape changes
     for (const key of Object.keys(page)) {
       if (!ALLOWED_PAGE_KEYS.has(key)) {
-        fail(`unknown page key "${key}" in ${where}. content.py changed shape; review the renderer contract before regenerating.`);
+        fail(
+          `unknown page key "${key}" in ${where}. content.py changed shape; review the renderer contract before regenerating.`,
+        );
       }
     }
 
-    if (typeof page.title !== "string") fail(`${where}: title must be a string`);
-    if (typeof page.section !== "string") fail(`${where}: section must be a string`);
+    if (typeof page.title !== "string")
+      fail(`${where}: title must be a string`);
+    if (typeof page.section !== "string")
+      fail(`${where}: section must be a string`);
     const section = deDash(page.section);
     if (!sectionSet.has(section)) {
-      fail(`${where}: section "${section}" is not in track sections [${sections.join(", ")}]`);
+      fail(
+        `${where}: section "${section}" is not in track sections [${sections.join(", ")}]`,
+      );
     }
 
     const rawBody = page.body ?? [];
@@ -182,16 +251,21 @@ for (const meta of tracks) {
       out.artColor = page.art_color;
     }
     if (page.art_row_colors !== undefined) {
-      if (!Array.isArray(page.art_row_colors) || !page.art_row_colors.every(isRowColor)) {
+      if (
+        !Array.isArray(page.art_row_colors) ||
+        !page.art_row_colors.every(isRowColor)
+      ) {
         fail(`${where}: art_row_colors must be (0..5)[]`);
       }
       out.artRowColors = page.art_row_colors;
     }
     if (page.highlight !== undefined) {
       const h = page.highlight;
-      if (!h || typeof h !== "object" || Array.isArray(h)) fail(`${where}: highlight must be an object`);
+      if (!h || typeof h !== "object" || Array.isArray(h))
+        fail(`${where}: highlight must be an object`);
       for (const [prefix, color] of Object.entries(h)) {
-        if (typeof prefix !== "string" || !isColor(color)) fail(`${where}: highlight entries must be string -> 1..5`);
+        if (typeof prefix !== "string" || !isColor(color))
+          fail(`${where}: highlight entries must be string -> 1..5`);
       }
       out.highlight = h;
     }
@@ -284,7 +358,11 @@ export function getTrack(id: string): Track | undefined {
 }
 `;
 
-writeFileSync(OUT_FILE, banner + types + body.replace(/^\n/, "") + "\n", "utf8");
+writeFileSync(
+  OUT_FILE,
+  banner + types + body.replace(/^\n/, "") + "\n",
+  "utf8",
+);
 
 // ---- slim client-side derivatives ------------------------------------------
 // TrackSelector (landing page) and the search modal only need summary/index
@@ -354,7 +432,9 @@ writeFileSync(SEARCH_FILE, searchOut, "utf8");
 
 console.error(`[gen-tutorial] paw ${version ?? "?"}  ${PAW_REPO}`);
 for (const t of outTracks) {
-  console.error(`  ${t.id.padEnd(11)} ${String(t.pages.length).padStart(2)} pages  ${t.sections.length} sections`);
+  console.error(
+    `  ${t.id.padEnd(11)} ${String(t.pages.length).padStart(2)} pages  ${t.sections.length} sections`,
+  );
 }
 console.error(
   `[gen-tutorial] ${outTracks.length} tracks, ${totalPages} pages, ${dashFixes} dash-normalized -> ${OUT_FILE}`,
