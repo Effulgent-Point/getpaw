@@ -14,8 +14,10 @@ export function ConsolePaw() {
       "  Now go build an agent: github.com/Effulgent-Point/paw",
       "",
     ].join("\n");
-    // eslint-disable-next-line no-console
-    console.log("%c" + art, "color:#21908c;font-family:monospace;font-size:12px");
+    console.log(
+      "%c" + art,
+      "color:#21908c;font-family:monospace;font-size:12px",
+    );
   }, []);
 
   return null;
