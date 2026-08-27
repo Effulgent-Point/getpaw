@@ -3,12 +3,140 @@ import Link from "next/link";
 import { CopyBlock } from "@/components/CopyBlock";
 import { GITHUB_URL } from "@/components/chrome/nav";
 
+// AEO-friendly meta: the description answers "how do I build my own AI
+// coding harness?" in one paragraph rather than pitching a product.
 export const metadata: Metadata = {
   title: "Build your own agentic harness",
   description:
-    "A practical playbook for encoding your engineering doctrine into an AI harness of your own. Deployment targets, journaling your day, mining your own corpus for a persona agent, and progressively automating yourself.",
+    "How to build your own agentic harness: start with mechanical hooks (git safety, secret scan), then encode doctrine as rules, then add narrow single-purpose agents, then chain them into pipelines. Deployment targets, corpus mining, and a step-by-step playbook.",
   alternates: { canonical: "/build-your-own" },
+  openGraph: {
+    title: "Build your own agentic harness: the playbook",
+    description:
+      "A step-by-step playbook: hooks first, then rules, then small agents, then orchestration. Corpus mining for a persona agent that reviews code in your voice.",
+    url: "https://getpaw.dev/build-your-own",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Build your own agentic harness: the playbook",
+    description:
+      "Hooks first, then rules, then small agents, then orchestration. The playbook we wish we had.",
+  },
 };
+
+// Structured data. HowTo covers the step-by-step playbook (Google and
+// Perplexity both surface HowTo in AI-synthesized answers). FAQPage covers
+// the "what is X" reader questions. Article ties the metadata together.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://getpaw.dev/build-your-own#article",
+      headline: "Build your own agentic harness",
+      description:
+        "A practical playbook for encoding your engineering doctrine into an AI harness of your own.",
+      url: "https://getpaw.dev/build-your-own",
+      author: { "@type": "Organization", name: "Effulgent Point" },
+      publisher: {
+        "@type": "Organization",
+        name: "Effulgent Point",
+        url: "https://effulgentpoint.com",
+      },
+      datePublished: "2026-08-26",
+      dateModified: "2026-08-26",
+      inLanguage: "en",
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://getpaw.dev/build-your-own#howto",
+      name: "How to build your own agentic harness",
+      description:
+        "Encode your own engineering doctrine into an AI harness by layering hooks, rules, small agents, and orchestration.",
+      totalTime: "P30D",
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Enhance the basics first",
+          text: "Encode git safety, secret scan, drift detection, and protected-branch guard as mechanical hooks. Cheap, unambiguous, and always-on. Do this before any LLM enters the picture.",
+          url: "https://getpaw.dev/build-your-own#basics",
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Walk through your day-to-day",
+          text: "Journal for one week. Identify recurrent shapes. Rank by tedium times frequency. Automate the smallest slice first.",
+          url: "https://getpaw.dev/build-your-own#day",
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Point your LLM at your history",
+          text: "Assemble a private corpus: two to three years of your git log, every PR you have authored, every review comment you have left. Feed the corpus and a distillation prompt to a capable model. Edit the output until it reads like you on your best day. Build a persona agent from it.",
+          url: "https://getpaw.dev/build-your-own#corpus",
+        },
+        {
+          "@type": "HowToStep",
+          position: 4,
+          name: "Slowly automate yourself",
+          text: "Hooks first. Then doctrine files agents can read. Then small narrow agents. Then orchestration between agents. Then reusable skill bundles that multiple agents draw on.",
+          url: "https://getpaw.dev/build-your-own#progressive",
+        },
+        {
+          "@type": "HowToStep",
+          position: 5,
+          name: "Experiment, evaluate, pivot, update",
+          text: "Every new capability lands behind a flag. Log outputs. Track false positive rate, false negative rate, latency, cost. Kill capabilities that fire more false positives than truth.",
+          url: "https://getpaw.dev/build-your-own#lifecycle",
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://getpaw.dev/build-your-own#faq",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is an agentic harness?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "An agentic harness is the scaffolding around an LLM: enforced doctrine, deterministic hooks that fire on real events, agents with narrow scopes, gates that block bad work from moving forward, and audit trails that make every decision reconstructable a year later. The LLM is the engine; the harness is the vehicle.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Why build my own harness instead of using paw?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "paw is one reference implementation of the pattern, not the pattern itself. Your standards are yours. Nobody else's harness enforces how you review code, catches what you keep flagging, or writes rollback plans in your voice. Fork paw as a starting point or build from scratch.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the smallest useful first step?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A mechanical git-safety hook. No LLM. Block force-push to main, block commits to main directly, warn on rebase against published history. Ship it before you build anything smarter. The hook layer stabilizes the ground everything else sits on.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can the harness work with multiple coding agents at once?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The agents, rules, and contexts stay the same; only the loader changes. Render every rule and agent to the format each IDE expects; keep the source of truth in one place.",
+          },
+        },
+      ],
+    },
+  ],
+};
+
+// Escape "<" so no value in the static JSON-LD object can break out of the
+// script element. Same technique as the site-wide graph in app/[shell]/layout.tsx.
+const JSON_LD_HTML = JSON.stringify(JSON_LD).replace(/</g, "\\u003c");
 
 // A prompt-ready block for the corpus-mining pass. Kept as a real script the
 // reader can adapt, not marketing prose.
@@ -223,8 +351,13 @@ const LIFECYCLE = [
 export default function BuildYourOwnPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON_LD_HTML }}
+      />
+      <article>
       {/* Hero */}
-      <section className="wrap pb-10 pt-16">
+      <section id="hero" className="wrap pb-10 pt-16">
         <span className="eyebrow">
           <span className="tick" />
           The playbook
@@ -318,7 +451,7 @@ export default function BuildYourOwnPage() {
       </section>
 
       {/* Enhance the basics first */}
-      <section className="wrap pb-16">
+      <section id="basics" className="wrap pb-16">
         <h2 className="label">
           <span className="tick" />
           Enhance the basics first
@@ -356,7 +489,7 @@ export default function BuildYourOwnPage() {
       </section>
 
       {/* Walk through YOUR day-to-day */}
-      <section className="wrap pb-16">
+      <section id="day" className="wrap pb-16">
         <h2 className="label">
           <span className="tick" />
           Walk through your day-to-day, step by step
@@ -387,7 +520,7 @@ export default function BuildYourOwnPage() {
       </section>
 
       {/* Slowly automate yourself */}
-      <section className="wrap pb-16">
+      <section id="progressive" className="wrap pb-16">
         <h2 className="label">
           <span className="tick" />
           Slowly automate yourself
@@ -419,7 +552,7 @@ export default function BuildYourOwnPage() {
       </section>
 
       {/* Point your LLM at your history */}
-      <section className="wrap pb-16">
+      <section id="corpus" className="wrap pb-16">
         <h2 className="label">
           <span className="tick" />
           Point your LLM at your history
@@ -544,7 +677,7 @@ export default function BuildYourOwnPage() {
       </section>
 
       {/* Experiment, evaluate, pivot, update */}
-      <section className="wrap pb-16">
+      <section id="lifecycle" className="wrap pb-16">
         <h2 className="label">
           <span className="tick" />
           Experiment, evaluate, pivot, update
@@ -624,6 +757,7 @@ export default function BuildYourOwnPage() {
           </div>
         </div>
       </section>
+      </article>
     </>
   );
 }

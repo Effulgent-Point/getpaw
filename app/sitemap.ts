@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/catalog",
     "/library",
     "/build-your-own",
+    "/resources",
     "/install",
   ].map((path) => ({
     url: `${BASE}${path}`,

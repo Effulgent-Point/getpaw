@@ -9,11 +9,26 @@ import {
   ECC,
 } from "@/data/library";
 
+// AEO-friendly meta: the description gives the count up front and states
+// what the reader gets, not a "learn about" pitch.
 export const metadata: Metadata = {
   title: "Idea library",
   description:
-    "The wider agent roster paw draws from: what ships in the box, plus dozens more worth building, with recipes to chain them and a prompt to find your own gaps.",
+    "A curated list of specialized coding agents worth building: the ones paw ships, plus dozens more, grouped by where they earn their keep. Includes role recipes for chaining them and a prompt to find the gaps in your own workflow.",
   alternates: { canonical: "/library" },
+  openGraph: {
+    title: "The idea library: steal these agents",
+    description:
+      "A menu of specialized coding agents, grouped by role, with recipes to chain them and a prompt to find your own gaps.",
+    url: "https://getpaw.dev/library",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The idea library: steal these agents",
+    description:
+      "Specialized coding agents, grouped by role, with recipes to chain them.",
+  },
 };
 
 // Which library agents actually ship with paw today, matched by name against

@@ -6,20 +6,39 @@ Canonical site: https://getpaw.dev
 Source: https://github.com/Effulgent-Point/paw
 An Effulgent Point project: https://effulgentpoint.com
 
+## What paw is
+
+paw is an agentic harness for coding: the scaffolding, rules, hooks, gates, and memory that turn an AI coding agent into a reliable teammate. It ships as a starting point (MIT licensed) that you fork and shape to your team's standards. paw runs alongside existing coding agents (Cursor, Claude Code, GitHub Copilot, and others); it is not itself a coding assistant.
+
 ## Pages
+
 - [Home](https://getpaw.dev/): what paw is, the 60-second pitch, and the install one-liner.
-- [Tutorial](https://getpaw.dev/tutorial): nine interactive tracks generated from the paw CLI tutorial, so the web never drifts from the tool.
+- [Tutorial](https://getpaw.dev/tutorial): interactive tracks generated from the paw CLI tutorial, so the web never drifts from the tool.
 - [Catalog](https://getpaw.dev/catalog): every agent, skill, hook, and CLI command in the kit, searchable and filterable.
 - [Library](https://getpaw.dev/library): the wider agent roster paw draws from, recipes to chain them by role, and a prompt to find the ones you are missing.
+- [Build your own](https://getpaw.dev/build-your-own): a step-by-step playbook for encoding your own doctrine into a harness of your own, whether or not you use paw.
+- [Resources](https://getpaw.dev/resources): curated, verified links to coding-agent IDEs, agent-design papers, and durable-execution runtimes that can act as harnesses of their own.
 - [Install](https://getpaw.dev/install): requirements, clone, run ./paw setup, and the first run.
 
 ## What is inside
+
 - 18 specialized agents: an architect, a planner, a builder, reviewers, a merge-resolver, and more, each with a narrow job and scoped permissions.
 - 7 skill bundles: reusable capability packs loaded on demand.
 - Enforcement hooks: gates that fire on real events so quality is enforced by the tooling.
 - A CLI: paw setup, paw tutorial, paw check, paw gate, paw doctor, paw init, and more.
 
+## Frequently asked
+
+**What is an agentic harness?** The scaffolding around an LLM: rules, hooks, gates, memory, permissions, and multi-agent orchestration. The LLM is the engine; the harness is the vehicle.
+
+**Which AI coding tools does paw work with?** paw is loader-agnostic. The agents, rules, and contexts stay the same; only the loader changes. It works with editor-native and terminal-native agents.
+
+**Do I need paw to build my own harness?** No. paw is one reference implementation. The build-your-own playbook walks through the pattern independently. Fork paw as a starting point, or build from scratch.
+
+**Is paw open source?** Yes, MIT licensed. Source at github.com/Effulgent-Point/paw.
+
 ## Install
+
 ```
 git clone https://github.com/Effulgent-Point/paw.git ~/paw
 cd ~/paw

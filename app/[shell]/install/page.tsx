@@ -3,11 +3,25 @@ import Link from "next/link";
 import { CopyBlock } from "@/components/CopyBlock";
 import { GITHUB_URL } from "@/components/chrome/nav";
 
+// AEO-friendly meta: the description is a direct answer to "how do I
+// install paw" with the exact commands and requirements inline.
 export const metadata: Metadata = {
   title: "Install",
   description:
-    "Install paw in under a minute: clone the repo, run ./paw setup, and start with the interactive tutorial. Python 3.10+, git, and Claude Code.",
+    "Install paw in under a minute: git clone https://github.com/Effulgent-Point/paw.git ~/paw, cd ~/paw, ./paw setup. Requires Python 3.10 or newer, git, a terminal, and a coding-agent CLI.",
   alternates: { canonical: "/install" },
+  openGraph: {
+    title: "Install paw in under a minute",
+    description:
+      "Clone the repo and run ./paw setup. Requirements: Python 3.10 or newer, git, a terminal, and a coding-agent CLI.",
+    url: "https://getpaw.dev/install",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Install paw in under a minute",
+    description: "Clone, ./paw setup, done. MIT licensed.",
+  },
 };
 
 const CLONE = `git clone https://github.com/Effulgent-Point/paw.git ~/paw
