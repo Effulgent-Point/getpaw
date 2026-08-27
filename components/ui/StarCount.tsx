@@ -1,7 +1,8 @@
 // Live GitHub star count, cached for an hour so we never hammer the API and
 // the page stays static-fast. Renders nothing if GitHub is unreachable or
 // rate-limits us, so the button degrades cleanly.
-export async function StarCount() {
+
+async function fetchStars(): Promise<number | null> {
   try {
     const res = await fetch(
       "https://api.github.com/repos/Effulgent-Point/paw",
@@ -13,18 +14,24 @@ export async function StarCount() {
           "User-Agent": "getpaw.dev",
         },
         signal: AbortSignal.timeout(2500),
-      }
+      },
     );
     if (!res.ok) return null;
     const data = (await res.json()) as { stargazers_count?: number };
-    if (typeof data.stargazers_count !== "number") return null;
-    return (
-      <span aria-label={`${data.stargazers_count} GitHub stars`}>
-        {" "}
-        ★ {data.stargazers_count}
-      </span>
-    );
+    return typeof data.stargazers_count === "number"
+      ? data.stargazers_count
+      : null;
   } catch {
+    // Network error, timeout, JSON parse failure — all degrade to "no badge."
     return null;
   }
+}
+
+export async function StarCount() {
+  // JSX construction happens outside the try/catch (react-hooks/error-boundaries
+  // is right that JSX inside try doesn't survive React's lazy rendering — the
+  // fetch is what actually needs the catch).
+  const stars = await fetchStars();
+  if (stars === null) return null;
+  return <span aria-label={`${stars} GitHub stars`}> ★ {stars}</span>;
 }
